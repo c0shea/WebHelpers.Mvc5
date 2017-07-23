@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelpers.Mvc5", "WebHelpers.Mvc5\WebHelpers.Mvc5.csproj", "{6A365D23-60BB-4342-9B62-1370084E205A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76C477F6-EE6A-42FA-A794-77C24722AB4D}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+		WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec = WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
