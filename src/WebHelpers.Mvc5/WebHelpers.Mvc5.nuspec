@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>WebHelpers.Mvc5</id>
-    <version>$version$</version>
+    <version>1.0.0</version>
     <title>WebHelpers.Mvc5</title>
     <authors>Connor O'Shea</authors>
     <owners>Connor O'Shea</owners>
