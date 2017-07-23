@@ -8,7 +8,7 @@
     <owners>Connor O'Shea</owners>
     <licenseUrl>https://github.com/c0shea/WebHelpers.Mvc5/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/c0shea/WebHelpers.Mvc5</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/c0shea/IdParser/master/NuGet%20Package%20Icon.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/c0shea/WebHelpers.Mvc5/master/NuGet%20Package%20Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A collection of helpers for ASP.NET MVC5.</description>
     <copyright>Copyright 2017</copyright>
@@ -19,6 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-  	<file src="bin\Release\*.*" target="lib\net45\" />
+  	<file src="bin\Release\WebHelpers.Mvc5.dll" target="lib\net45\" />
+    <file src="bin\Release\WebHelpers.Mvc5.xml" target="lib\net45\" />
   </files>
 </package>
