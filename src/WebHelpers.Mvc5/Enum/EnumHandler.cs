@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace WebHelpers.Mvc5.Enum
@@ -15,12 +13,8 @@ namespace WebHelpers.Mvc5.Enum
     /// </summary>
     public class EnumHandler : IHttpHandler
     {
-        private static readonly Lazy<string> _handlerUrl = new Lazy<string>(GetHandlerUrl);
-
-        /// <summary>
-        /// How long to cache the JavaScript output for. Only used when a unique hash is present in the URL.
-        /// </summary>
         private static readonly TimeSpan CacheFor = TimeSpan.FromDays(7);
+        private static readonly Lazy<string> JavaScript = new Lazy<string>(GetJavaScript);
 
         /// <summary>
         /// Gets a value indicating whether another request can use the <see cref="IHttpHandler"/> instance.
@@ -31,7 +25,7 @@ namespace WebHelpers.Mvc5.Enum
         /// Gets the URL to the <see cref="EnumHandler"/>, with a unique hash in the URL.
         /// The hash will change every time an Enum changes.
         /// </summary>
-        public static string HandlerUrl => _handlerUrl.Value;
+        public static string HandlerUrl => GetHandlerUrl();
 
         /// <summary>
         /// Handles a HTTP request.
@@ -42,13 +36,10 @@ namespace WebHelpers.Mvc5.Enum
         /// </param>
         public void ProcessRequest(HttpContext context)
         {
-
-            var javascript = GetJavaScript();
-
-            SetCachingHeaders(context, javascript);
+            SetCachingHeaders(context, JavaScript.Value);
 
             context.Response.ContentType = "text/javascript";
-            context.Response.Write(javascript);
+            context.Response.Write(JavaScript.Value);
         }
 
         /// <summary>
@@ -68,18 +59,7 @@ namespace WebHelpers.Mvc5.Enum
         private static string GetJavaScript()
         {
             var sb = new StringBuilder("window.Enums = Object.freeze({");
-
-            var enumsFound = new List<Type>();
-
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                enumsFound.AddRange(assembly.GetTypes()
-                                            .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
-            }
-
-            //var enums = Assembly.GetCallingAssembly()
-            //                    .GetTypes()
-            //                    .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any());
+            var enumsFound = GetTypesWithExposeAttribute();
 
             for (int i = 0; i < enumsFound.Count; i++)
             {
@@ -90,15 +70,23 @@ namespace WebHelpers.Mvc5.Enum
                     sb.Append(",");
                 }
             }
-
-            //foreach (var enumFound in enumsFound)
-            //{
-            //    AppendEnumJson(sb, enumFound);
-            //}
-
+            
             sb.Append("});");
 
             return sb.ToString();
+        }
+
+        private static List<Type> GetTypesWithExposeAttribute()
+        {
+            var enumsFound = new List<Type>();
+
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                enumsFound.AddRange(assembly.GetTypes()
+                                            .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
+            }
+
+            return enumsFound;
         }
 
         private static void AppendEnumJson(StringBuilder sb, Type type)
@@ -114,7 +102,6 @@ namespace WebHelpers.Mvc5.Enum
                 i++;
                 sb.Append(System.Enum.GetName(type, value));
                 sb.Append(":");
-                //sb.Append(value.GetType().Name);
 
                 // We can't assume a cast to an int since an enum can be any integral type and will throw an InvalidCastException.
                 sb.Append(Convert.ChangeType(value, Type.GetTypeCode(value.GetType())));
@@ -148,10 +135,7 @@ namespace WebHelpers.Mvc5.Enum
         /// </summary>
         private static string GetHandlerUrl()
         {
-            // Hash the file contents so the URL can change whenever a route or the routing JS changes
-            // Include version in hash so upgrades invalidate client-side cache
-            var javascript = GetJavaScript();
-            var hash = Hash(javascript); // TODO: Add file last modified date ticks to make this unique?
+            var hash = Hash(JavaScript.Value);
 
             return string.Join("/", VirtualPathUtility.ToAbsolute("~/WebHelpers.axd"), hash);
         }
