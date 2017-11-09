@@ -53,3 +53,18 @@ outputs
 ```
 /Content/img/user.png?v=636296810982047488
 ```
+
+## EnumHandler
+
+Renders Enums as a frozen object in JavaScript to promote re-usability between the server and client.
+
+Add to your Web.config:
+
+```
+<system.webServer>
+    <handlers>
+        <remove name="WebHelpers" />
+        <add name="WebHelpers" verb="GET" path="WebHelpers.axd" type="WebHelpers.Mvc5.Enum.EnumHandler" preCondition="integratedMode" />
+    </handlers>
+</system.webServer>
+```

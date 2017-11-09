@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CssRewriteUrlTransformAbsolute.cs" />
+    <Compile Include="Enum\EnumHandler.cs" />
+    <Compile Include="Enum\ExposeInJavaScriptAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UrlHelperExtensions.cs" />
     <Compile Include="VersionExtensions.cs" />
