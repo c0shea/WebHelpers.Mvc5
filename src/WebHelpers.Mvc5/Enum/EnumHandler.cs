@@ -28,6 +28,14 @@ namespace WebHelpers.Mvc5.Enum
         public static string HandlerUrl => GetHandlerUrl();
 
         /// <summary>
+        /// Allows you to fluently declare which enums should be exposed or excluded instead of decorating the enum with
+        /// the <see cref="ExposeInJavaScriptAttribute"/>. This is useful for enums that reside in other
+        /// libraries that you can't add the attribute to.
+        /// </summary>
+        // ReSharper disable once MemberCanBePrivate.Global
+        public static EnumCollection EnumsToExpose { get; } = new EnumCollection();
+
+        /// <summary>
         /// Handles a HTTP request.
         /// </summary>
         /// <param name="context">
@@ -70,7 +78,7 @@ namespace WebHelpers.Mvc5.Enum
                     sb.Append(",");
                 }
             }
-            
+
             sb.Append("});");
 
             return sb.ToString();
@@ -83,10 +91,13 @@ namespace WebHelpers.Mvc5.Enum
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 enumsFound.AddRange(assembly.GetTypes()
-                                            .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
+                    .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
             }
 
-            return enumsFound;
+            enumsFound.AddRange(EnumsToExpose.TypesToInclude);
+            enumsFound.RemoveAll(e => EnumsToExpose.TypesToExclude.Contains(e));
+
+            return enumsFound.Distinct().ToList();
         }
 
         private static void AppendEnumJson(StringBuilder sb, Type type)
@@ -137,7 +148,7 @@ namespace WebHelpers.Mvc5.Enum
         {
             var hash = Hash(JavaScript.Value);
 
-            return string.Join("/", VirtualPathUtility.ToAbsolute("~/WebHelpers.axd"), hash);
+            return string.Join("/", VirtualPathUtility.ToAbsolute("~/WebHelpers.axd"), hash, "webhelpers.js");
         }
     }
 }
