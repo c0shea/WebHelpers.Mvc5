@@ -68,3 +68,30 @@ Add to your Web.config:
     </handlers>
 </system.webServer>
 ```
+
+Add to your _Layout.cshtml:
+
+```
+<script src="@EnumHandler.HandlerUrl"></script>
+```
+
+Then decorate your enum with the `ExposeInJavaScript` attribute:
+```
+[ExposeInJavaScript]
+public enum MyEnum
+{
+    Test
+}
+```
+
+Alternatively, you can specify the enums to include and exclude via configuration.
+This is helpful if you choose to keep your enums clean or if they reside in other
+libraries that can't take on this dependency. To do this, you can register them in
+your `Global.asax`.
+
+```
+protected void Application_Start()
+{
+    EnumHandler.EnumsToExpose.Include(typeof(MyEnum));
+}
+```
