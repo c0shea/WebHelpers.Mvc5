@@ -15,6 +15,7 @@ namespace WebHelpers.Mvc5.Enum
     {
         private static readonly TimeSpan CacheFor = TimeSpan.FromDays(7);
         private static readonly Lazy<string> JavaScript = new Lazy<string>(GetJavaScript);
+        private static string _globalVariableName = "Enums";
 
         /// <summary>
         /// Gets a value indicating whether another request can use the <see cref="IHttpHandler"/> instance.
@@ -34,6 +35,16 @@ namespace WebHelpers.Mvc5.Enum
         /// </summary>
         // ReSharper disable once MemberCanBePrivate.Global
         public static EnumCollection EnumsToExpose { get; } = new EnumCollection();
+
+        /// <summary>
+        /// Allows you change the name of the global variable that is created for the enums.
+        /// It is Enums by default.
+        /// </summary>
+        public static string GlobalVariableName
+        {
+            get => _globalVariableName;
+            set => _globalVariableName = value ?? throw new ArgumentNullException(nameof(value));
+        }
 
         /// <summary>
         /// Handles a HTTP request.
@@ -66,7 +77,10 @@ namespace WebHelpers.Mvc5.Enum
 
         private static string GetJavaScript()
         {
-            var sb = new StringBuilder("window.Enums = Object.freeze({");
+            var sb = new StringBuilder("window.");
+            sb.Append(GlobalVariableName);
+            sb.Append(" = Object.freeze({");
+
             var enumsFound = GetTypesWithExposeAttribute();
 
             for (int i = 0; i < enumsFound.Count; i++)
