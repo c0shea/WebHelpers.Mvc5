@@ -1,6 +1,7 @@
 # WebHelpers.Mvc5
 
 ![Build Status](https://coshea.visualstudio.com/_apis/public/build/definitions/c4f53986-29b5-45cd-b130-b074bbc802b0/4/badge)
+![NuGet](https://img.shields.io/nuget/v/WebHelpers.Mvc5.svg)
 
 A collection of helpers for ASP.NET MVC5.
 
