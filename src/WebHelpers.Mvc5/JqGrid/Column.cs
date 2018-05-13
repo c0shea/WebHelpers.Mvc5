@@ -114,6 +114,16 @@ namespace WebHelpers.Mvc5.JqGrid
         public string FormatterName { get; set; }
 
         /// <summary>
+        /// The name of a function that is called to un-format a cell to get the original value back.
+        /// </summary>
+        /// <remarks>
+        /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/formatters/#custom-formatter
+        /// </remarks>
+        [JsonProperty("unformat")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string UnFormatterName { get; set; }
+
+        /// <summary>
         /// Overrides the default formatting options from the language file for the specified formatter.
         /// </summary>
         [JsonProperty("formatoptions")]
@@ -146,8 +156,10 @@ namespace WebHelpers.Mvc5.JqGrid
 
         /// <summary>
         /// Defines the JSON mapping for the column.
-        /// See http://www.guriddo.net/documentation/guriddo/javascript/user-guide/basic-grid/#json-data for details.
         /// </summary>
+        /// <remarks>
+        /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/basic-grid/#json-data
+        /// </remarks>
         [JsonProperty("jsonmap")]
         public string JsonMap { get; set; }
 
@@ -237,6 +249,18 @@ namespace WebHelpers.Mvc5.JqGrid
                 {
                     return ActionColumnFormatOptions.Name == FormatterName;
                 }
+            }
+
+            if (FormatterName != null)
+            {
+                // The function should not end with ()
+                return !FormatterName.Contains('(') && !FormatterName.Contains(')');
+            }
+
+            if (UnFormatterName != null)
+            {
+                // The function should not end with ()
+                return !UnFormatterName.Contains('(') && !UnFormatterName.Contains(')');
             }
 
             return !string.IsNullOrEmpty(Name);
