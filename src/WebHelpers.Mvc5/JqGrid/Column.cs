@@ -119,11 +119,55 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("formatoptions")]
         public ColumnFormatOptions.ColumnFormatOptions FormatOptions { get; set; }
 
+        /// <summary>
+        /// Specifies whether or not the column will be frozen once the setFrozenColumns method is called.
+        /// </summary>
+        [JsonProperty("frozen")]
+        public bool IsFrozen { get; set; }
 
+        /// <summary>
+        /// Specifies whether or not the column will be hidden from the column chooser and column menu dialogs.
+        /// </summary>
+        [JsonProperty("hidedlg")]
+        public bool IsHiddenInDialogs { get; set; }
 
-
+        /// <summary>
+        /// Specifies whether or not the column is hidden at initialization. If true, the column is not editable
+        /// and will not show in the form edit dialog.
+        /// </summary>
         [JsonProperty("hidden")]
         public bool IsHidden { get; set; }
+
+        /// <summary>
+        /// The index name to use when sorting. If set, this field is used in searching.
+        /// </summary>
+        [JsonProperty("index")]
+        public string Index { get; set; }
+
+        /// <summary>
+        /// Defines the JSON mapping for the column.
+        /// See http://www.guriddo.net/documentation/guriddo/javascript/user-guide/basic-grid/#json-data for details.
+        /// </summary>
+        [JsonProperty("jsonmap")]
+        public string JsonMap { get; set; }
+
+        /// <summary>
+        /// Overwrite the defined primary key returned from the server or array data.
+        /// Only one column can have this property set to true.
+        /// </summary>
+        [JsonProperty("key")]
+        public bool IsPrimaryKey { get; set; }
+
+        /// <summary>
+        /// The header caption for the column. If this property isn't set, the heading for the column
+        /// is the value of the <see cref="Name"/> property.
+        /// </summary>
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        
+
+
 
         private bool IsValid()
         {

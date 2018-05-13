@@ -58,7 +58,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// Additional parameters to send to the server.
         /// </summary>
         [JsonProperty("extraparam")]
-        public string Parameters { get; set; }
+        public object Parameters { get; set; }
 
         /// <summary>
         /// The name of the function to call after the data is saved to the server. The row id and the server's response are

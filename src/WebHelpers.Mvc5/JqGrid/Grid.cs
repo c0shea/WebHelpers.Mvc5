@@ -10,6 +10,9 @@ namespace WebHelpers.Mvc5.JqGrid
 {
     public class Grid
     {
+        [JsonProperty("colNames")]
+        public List<string> ColumnNames => Columns?.Select(c => c.Label ?? c.Name).ToList();
+
         [JsonProperty("colModel")]
         public List<Column> Columns { get; set; }
 
@@ -20,6 +23,9 @@ namespace WebHelpers.Mvc5.JqGrid
                 var formEditOptions = Columns.Where(c => c.FormEditOptions != null).Select(c => c.FormEditOptions);
 
                 // TODO: Ensure that there are no duplicate row:column position combinations across the columns
+
+                return Columns.Count(c => c.IsPrimaryKey) <= 1 &&
+                       Columns.Count == ColumnNames.Count;
             }
 
             return true;
