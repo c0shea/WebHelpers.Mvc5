@@ -15,15 +15,6 @@ namespace WebHelpers.Mvc5.JqGrid
     /// </remarks>
     public class Column
     {
-        // Required
-        // ========
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        // Optional
-        // ========
-
         /// <summary>
         /// The alignment of the cell in the data rows. The header cell is not affected.
         /// </summary>
@@ -177,7 +168,38 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("label")]
         public string Label { get; set; }
 
-        
+        /// <summary>
+        /// The minimum re-sizing width. When set greater than 0, this option has a higher priority
+        /// than the grid's minimum column width option.
+        /// </summary>
+        [JsonProperty("minResizeWidth")]
+        public int MinResizeWidth { get; set; }
+
+        /// <summary>
+        /// The unique name of the column in the grid. This property is required.
+        /// Reserved property names, event names, and words including subgrid, sb, and rn
+        /// are not allowed.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the column can be resized with the mouse or resizeColumn method.
+        /// </summary>
+        [JsonProperty("resizable")]
+        [DefaultValue(true)]
+        public bool IsResizable { get; set; } = true;
+
+        /// <summary>
+        /// Specifies whether or not searching is enabled for the column.
+        /// </summary>
+        /// <remarks>
+        /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/searching/#configuration
+        /// </remarks>
+        [JsonProperty("search")]
+        [DefaultValue(true)]
+        public bool CanSearch { get; set; } = true;
+
 
 
 
