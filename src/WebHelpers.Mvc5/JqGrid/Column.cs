@@ -110,7 +110,6 @@ namespace WebHelpers.Mvc5.JqGrid
         /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/formatters/
         /// </remarks>
         [JsonProperty("formatter")]
-        // TODO: I don't think this will work if we specify a custom function name
         [JsonConverter(typeof(FormatterNameConverter))]
         public string FormatterName { get; set; }
 

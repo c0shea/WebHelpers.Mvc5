@@ -14,13 +14,13 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         public new static string Name => "showLink";
 
         /// <summary>
-        /// The base URI of the link, e.g. "http://myserver.com/"
+        /// The base URL of the link, e.g. "http://myserver.com/"
         /// </summary>
         [JsonProperty("baseLinkUrl")]
-        public string BaseUri { get; set; }
+        public string BaseUrl { get; set; }
 
         /// <summary>
-        /// The value that is added after the <see cref="BaseUri"/>, e.g. "Edit"
+        /// The value that is added after the <see cref="BaseUrl"/>, e.g. "Edit"
         /// </summary>
         [JsonProperty("showaction")]
         public string Action { get; set; }

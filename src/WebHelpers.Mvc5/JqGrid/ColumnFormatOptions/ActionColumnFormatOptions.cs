@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Newtonsoft.Json;
+using WebHelpers.Mvc5.JqGrid.Converters;
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
@@ -35,6 +31,89 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         [JsonProperty("editformbutton")]
         public bool UseFormEditDialog { get; set; }
 
-        // TODO: Finish adding events
+        /// <summary>
+        /// The name of the function to call after successfully accessing the row for editing prior to allowing
+        /// user access to the input fields. The row id is passed to this function.
+        /// </summary>
+        [JsonProperty("onEdit")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string OnEditEventName { get; set; }
+
+        /// <summary>
+        /// The name of the function to call immediately after the request to save the data to the server is successful.
+        /// The data returned from the server is passed to this function. Depending on the server's response, this function
+        /// should return true or false.
+        /// </summary>
+        [JsonProperty("onSuccess")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string OnSuccessEventName { get; set; }
+
+        /// <summary>
+        /// The URL to call to save the data.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        /// <summary>
+        /// Additional parameters to send to the server.
+        /// </summary>
+        [JsonProperty("extraparam")]
+        public string Parameters { get; set; }
+
+        /// <summary>
+        /// The name of the function to call after the data is saved to the server. The row id and the server's response are
+        /// passed to this function. The function is called even when the <see cref="Url"/> is set to clientArray.
+        /// </summary>
+        [JsonProperty("afterSave")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string AfterSaveEventName { get; set; }
+
+        /// <summary>
+        /// The name of the function to call after an AJAX error or the <see cref="OnSuccessEventName"/> returned false.
+        /// The row id and the server's response are passed to this function.
+        /// The function is called even when the <see cref="Url"/> is set to clientArray.
+        /// </summary>
+        [JsonProperty("onError")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string OnErrorEventName { get; set; }
+
+        /// <summary>
+        /// The name of the function to call after restoring the row by pressing the Esc key or the cancel button.
+        /// The row id is passed to this function.
+        /// </summary>
+        [JsonProperty("afterRestore")]
+        [JsonConverter(typeof(FunctionNameConverter))]
+        public string OnEscapeEventName { get; set; }
+
+        /// <summary>
+        /// The HTTP method to use when saving data to the server.
+        /// </summary>
+        [JsonProperty("mtype")]
+        [DefaultValue(HttpMethod.Post)]
+        public HttpMethod HttpMethod { get; set; } = HttpMethod.Post;
+
+        /// <summary>
+        /// The edit grid row options when <see cref="UseFormEditDialog"/> is true.
+        /// </summary>
+        [JsonProperty("editOptions")]
+        // TODO: Split out the valid options into a class instead of generic object.
+        public object EditOptions { get; set; }
+
+        /// <summary>
+        /// The delete grid row options.
+        /// </summary>
+        [JsonProperty("delOptions")]
+        // TODO: Split out the valid options into a class instead of generic object.
+        public object DeleteOptions { get; set; }
+
+        private bool IsValid()
+        {
+            if (EditOptions != null && !UseFormEditDialog)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
