@@ -1,25 +1,31 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using WebHelpers.Mvc5.JqGrid.ColumnFormatOptions;
 
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
-    public class FormatterNameConverter : JsonConverter
+    public class FormatterNameConverter : FunctionNameConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteRawValue((string)value);
-        }
+            var stringValue = (string)value;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
+            if (stringValue == IntegerColumnFormatOptions.Name ||
+                stringValue == NumberColumnFormatOptions.Name ||
+                stringValue == CurrencyColumnFormatOptions.Name ||
+                stringValue == DateColumnFormatOptions.Name ||
+                stringValue == EmailColumnFormatOptions.Name ||
+                stringValue == LinkColumnFormatOptions.Name ||
+                stringValue == ShowLinkColumnFormatOptions.Name ||
+                stringValue == CheckBoxColumnFormatOptions.Name ||
+                stringValue == SelectColumnFormatOptions.Name ||
+                stringValue == ActionColumnFormatOptions.Name)
+            {
+                writer.WriteValue(stringValue);
+            }
+            else
+            {
+                base.WriteJson(writer, value, serializer);
+            }
         }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(string);
-        }
-
-        public override bool CanRead => false;
     }
 }
