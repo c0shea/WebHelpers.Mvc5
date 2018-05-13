@@ -85,21 +85,8 @@ namespace WebHelpers.Mvc5
                     //}
                 }
             };
-
-            var serializer = new JsonSerializer
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                DefaultValueHandling = DefaultValueHandling.Ignore
-            };
-            using (var stringWriter = new StringWriter())
-            using (var writer = new JsonTextWriter(stringWriter) { QuoteName = false })
-            {
-                serializer.Serialize(writer, grid);
-
-                var json = stringWriter.ToString();
-
-                return new MvcHtmlString(json);
-            }
+            
+            return new MvcHtmlString(grid.ToString());
         }
     }
 }

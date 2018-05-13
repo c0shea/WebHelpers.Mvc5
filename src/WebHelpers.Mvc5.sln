@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec = WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelpers.Mvc5.Test", "..\tests\WebHelpers.Mvc5.Test\WebHelpers.Mvc5.Test.csproj", "{1E2FD900-6987-481C-8DDC-2A160BF94DBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{6A365D23-60BB-4342-9B62-1370084E205A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A365D23-60BB-4342-9B62-1370084E205A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A365D23-60BB-4342-9B62-1370084E205A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BEEAAFE8-63EB-41A4-9A8B-83A604A84CF6}
 	EndGlobalSection
 EndGlobal
