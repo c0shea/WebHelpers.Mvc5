@@ -102,6 +102,7 @@
     <Compile Include="JqGrid\FormEditOptions.cs" />
     <Compile Include="JqGrid\Grid.cs" />
     <Compile Include="JqGrid\HttpMethod.cs" />
+    <Compile Include="JqGrid\SearchType.cs" />
     <Compile Include="JqGrid\SortOrder.cs" />
     <Compile Include="JqGrid\TextAlign.cs" />
     <Compile Include="LinkTarget.cs" />

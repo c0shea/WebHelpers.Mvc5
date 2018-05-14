@@ -45,11 +45,11 @@ namespace WebHelpers.Mvc5.JqGrid
         /// Specifies whether or not the field is editable in inline edit and form edit modes.
         /// </summary>
         [JsonProperty("editable")]
-        public bool IsEditable { get; set; }
+        public bool CanEdit { get; set; }
 
         /// <summary>
         /// The allowed options for the editable column. This property is only valid if
-        /// <see cref="IsEditable"/> is true.
+        /// <see cref="CanEdit"/> is true.
         /// </summary>
         /// <example>new { cacheDataUrl = true, delimiter = "|" }</example>
         [JsonProperty("editoptions")]
@@ -200,8 +200,71 @@ namespace WebHelpers.Mvc5.JqGrid
         [DefaultValue(true)]
         public bool CanSearch { get; set; } = true;
 
+        // TODO: searchoptions
 
+        /// <summary>
+        /// Specifies whether or not the column can be sorted.
+        /// If false, clicking the column header has no action.
+        /// </summary>
+        [JsonProperty("sortable")]
+        [DefaultValue(true)]
+        public bool CanSort { get; set; } = true;
 
+        // TODO: sortfunc
+
+        // TODO: sorttype
+
+        /// <summary>
+        /// The search input type of the field. If <see cref="SearchType.Custom"/> is specified, use the
+        /// custom element and value properties.
+        /// </summary>
+        [JsonProperty("stype")]
+        [DefaultValue(SearchType.Text)]
+        public SearchType SearchType { get; set; } = SearchType.Text;
+
+        /// <summary>
+        /// A set of valid properties for the column model. This can be used if you want to overwrite a lot
+        /// of default values in the column model with ease.
+        /// </summary>
+        [JsonProperty("template")]
+        public object Template { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the title is displayed in the column when the mouse hovers over a cell.
+        /// </summary>
+        [JsonProperty("title")]
+        [DefaultValue(true)]
+        public bool ShouldDisplayTitleOnHover { get; set; } = true;
+
+        /// <summary>
+        /// The initial width of the column, in pixels.
+        /// </summary>
+        [JsonProperty("width")]
+        [DefaultValue(150)]
+        public int Width { get; set; } = 150;
+
+        /// <summary>
+        /// The initial width set, in pixels. This value doesn't change during resizing of the grid.
+        /// </summary>
+        [JsonProperty("widthOrg")]
+        [DefaultValue(150)]
+        public int OriginalWidth { get; set; } = 150;
+
+        /// <summary>
+        /// Defines the XML mapping for the column.
+        /// </summary>
+        /// <remarks>
+        /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/basic-grid/#xml-data
+        /// </remarks>
+        [JsonProperty("xmlmap")]
+        public string XmlMap { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the column appears in the view form when the viewGridRow method is called.
+        /// </summary>
+        [JsonProperty("viewable")]
+        [DefaultValue(true)]
+        public bool CanView { get; set; } = true;
 
         private bool IsValid()
         {
@@ -210,7 +273,7 @@ namespace WebHelpers.Mvc5.JqGrid
              *
              */
 
-            if (EditAttributes != null && !IsEditable)
+            if (EditAttributes != null && !CanEdit)
             {
                 return false;
             }
