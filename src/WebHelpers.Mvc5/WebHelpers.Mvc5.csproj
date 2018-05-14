@@ -84,6 +84,7 @@
     <Compile Include="Enum\EnumHandler.cs" />
     <Compile Include="Enum\ExposeInJavaScriptAttribute.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="JqGrid\DataDestination.cs" />
     <Compile Include="JqGrid\Column.cs" />
     <Compile Include="JqGrid\ColumnFormatOptions\ActionColumnFormatOptions.cs" />
     <Compile Include="JqGrid\ColumnFormatOptions\CheckBoxColumnFormatOptions.cs" />
