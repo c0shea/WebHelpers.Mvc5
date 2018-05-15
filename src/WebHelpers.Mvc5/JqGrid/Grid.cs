@@ -153,6 +153,35 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("editurl")]
         public string EditUrl { get; set; }
 
+        /// <summary>
+        /// The message to display when the returned or current number of records in the grid is zero.
+        /// This option is only valid when TODO: viewrecords is true.
+        /// </summary>
+        [JsonProperty("emptyrecords")]
+        public string EmptyResultSetMessage { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the tree grid is expanded or collapsed when the user clicks anywhere
+        /// on the text in the expanded column. It is not necessary, then, to click exactly on the icon.
+        /// </summary>
+        [JsonProperty("ExpandColClick")]
+        [DefaultValue(true)]
+        public bool ShouldToggleOnColumnClick { get; set; } = true;
+
+        // TODO: Only serialize the Name of the column, not the entire object
+        [JsonProperty("ExpandColumn")]
+        public Column ExpandColumn { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not to show a footer row below the grid records and above the pager.
+        /// The number of columns equal those specified in <see cref="Columns"/>.
+        /// </summary>
+        [JsonProperty("footerrow")]
+        public bool ShowFooter { get; set; }
+
+
+
+
         private bool IsValid()
         {
             if (Columns != null)
@@ -184,6 +213,7 @@ namespace WebHelpers.Mvc5.JqGrid
             {
                 return false;
             }
+            // TODO: If tree grid only, then allow ExpandColumn
 
             return true;
         }
