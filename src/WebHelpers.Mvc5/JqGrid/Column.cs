@@ -111,7 +111,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/formatters/#custom-formatter
         /// </remarks>
         [JsonProperty("unformat")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string UnFormatterName { get; set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}]}";
+            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}],colNames:[""One"",""Two"",""Three""]}";
 
             Assert.AreEqual(expected, json);
         }
@@ -40,7 +40,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One"",formatter:""integer""}]}";
+            var expected = @"{colModel:[{formatter:""integer"",name:""One""}],colNames:[""One""]}";
 
             Assert.AreEqual(expected, json);
         }
@@ -57,7 +57,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One"",formatter:MyCustomJsFunc}]}";
+            var expected = @"{colModel:[{formatter:MyCustomJsFunc,name:""One""}],colNames:[""One""]}";
 
             Assert.AreEqual(expected, json);
         }

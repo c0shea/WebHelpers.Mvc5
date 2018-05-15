@@ -4,10 +4,10 @@ using Newtonsoft.Json;
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
     /// <summary>
-    /// Outputs the string value as a JavaScript function without quotes in JSON.
+    /// Outputs the string value as a JavaScript function or variable without quotes in JSON.
     /// e.g. OnEditEventName: "MyJsFuncName" becomes OnEditEventName: MyJsFuncName
     /// </summary>
-    public class FunctionNameConverter : JsonConverter
+    public class LiteralNameConverter : JsonConverter
     {
         public override bool CanRead => false;
 

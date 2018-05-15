@@ -100,7 +100,8 @@
     <Compile Include="JqGrid\ColumnFormatOptions\SelectColumnFormatOptions.cs" />
     <Compile Include="JqGrid\ColumnFormatOptions\ShowLinkColumnFormatOptions.cs" />
     <Compile Include="JqGrid\Converters\FormatterNameConverter.cs" />
-    <Compile Include="JqGrid\Converters\FunctionNameConverter.cs" />
+    <Compile Include="JqGrid\Converters\LiteralNameConverter.cs" />
+    <Compile Include="JqGrid\DataType.cs" />
     <Compile Include="JqGrid\EditType.cs" />
     <Compile Include="JqGrid\FormEditOptions.cs" />
     <Compile Include="JqGrid\Grid.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="JqGrid\SearchType.cs" />
     <Compile Include="JqGrid\SortOrder.cs" />
     <Compile Include="JqGrid\TextAlign.cs" />
+    <Compile Include="JqGrid\TextDirection.cs" />
     <Compile Include="LinkTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReSharperAnnotations.cs" />

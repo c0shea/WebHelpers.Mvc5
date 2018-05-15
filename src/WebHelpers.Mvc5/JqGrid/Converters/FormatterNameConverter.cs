@@ -3,7 +3,7 @@ using WebHelpers.Mvc5.JqGrid.ColumnFormatOptions;
 
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
-    public class FormatterNameConverter : FunctionNameConverter
+    public class FormatterNameConverter : LiteralNameConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

@@ -36,7 +36,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// user access to the input fields. The row id is passed to this function.
         /// </summary>
         [JsonProperty("onEdit")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string OnEditEventName { get; set; }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// should return true or false.
         /// </summary>
         [JsonProperty("onSuccess")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string OnSuccessEventName { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// passed to this function. The function is called even when the <see cref="Url"/> is set to clientArray.
         /// </summary>
         [JsonProperty("afterSave")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string AfterSaveEventName { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// The function is called even when the <see cref="Url"/> is set to clientArray.
         /// </summary>
         [JsonProperty("onError")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string OnErrorEventName { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
         /// The row id is passed to this function.
         /// </summary>
         [JsonProperty("afterRestore")]
-        [JsonConverter(typeof(FunctionNameConverter))]
+        [JsonConverter(typeof(LiteralNameConverter))]
         public string OnEscapeEventName { get; set; }
 
         /// <summary>

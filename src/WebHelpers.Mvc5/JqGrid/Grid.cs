@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WebHelpers.Mvc5.JqGrid.Converters;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
@@ -79,17 +80,78 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("cellurl")]
         public string CellSubmitUrl { get; set; }
 
-        // TODO: cmTemplate
+        /// <summary>
+        /// Defines a template of properties that override the default values for all columns.
+        /// </summary>
+        [JsonProperty("cmTemplate")]
+        public object ColumnTemplate { get; set; }
+
         // TODO: colFilters
-        // TODO: colMenu
 
-
-
-        [JsonProperty("colNames")]
-        public List<string> ColumnNames => Columns?.Select(c => c.Label ?? c.Name).ToList();
+        /// <summary>
+        /// Specifies whether or not the column menu is enabled. The column menu creates a button
+        /// on the header of allowed columns and provides a context menu when clicked.
+        /// </summary>
+        /// <remarks>
+        /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/colmenu/
+        /// </remarks>
+        [JsonProperty("colMenu")]
+        public bool IsColumnMenuEnabled { get; set; }
 
         [JsonProperty("colModel")]
         public List<Column> Columns { get; set; }
+        
+        [JsonProperty("colNames")]
+        public List<string> ColumnNames => Columns?.Select(c => c.Label ?? c.Name).ToList();
+
+        [JsonProperty("data")]
+        [JsonConverter(typeof(LiteralNameConverter))]
+        public string LocalDataArrayName { get; set; }
+        
+        /// <summary>
+        /// The string of data to use when the <see cref="DataType"/> parameter is set to
+        /// <see cref="DataType.XmlLocalData"/> or <see cref="DataType.JsonLocalData"/>.
+        /// </summary>
+        [JsonProperty("datastr")]
+        public string LocalData { get; set; }
+
+        /// <summary>
+        /// The data format expected to fill the grid.
+        /// </summary>
+        [JsonProperty("datatype")]
+        [DefaultValue(DataType.Xml)]
+        public DataType DataType { get; set; } = DataType.Xml;
+
+        /// <summary>
+        /// Specifies whether or not jQuery empty is used for the row and all child elements.
+        /// This option should be set to true if an event or plugin is attached to the table cell.
+        /// TODO: Set to true if sortable rows and/or columns are activated
+        /// </summary>
+        [JsonProperty("deepempty")]
+        public bool UseJqueryEmpty { get; set; }
+
+        // TODO: delOptions
+
+        /// <summary>
+        /// Specifies whether or not the currently selected row(s) are deselected when a sort is applied.
+        /// This option is only applicable when the <see cref="DataType"/> is set to <see cref="DataType.LocalDataArray"/>.
+        /// </summary>
+        [JsonProperty("deselectAfterSort")]
+        [DefaultValue(true)]
+        public bool ShouldDeselectAfterSort { get; set; } = true;
+
+        /// <summary>
+        /// The direction of the text in the grid. The grid will automatically change the direction of the text
+        /// depending on this option.
+        /// </summary>
+        [JsonProperty("direction")]
+        [DefaultValue(JqGrid.TextDirection.LeftToRight)]
+        public TextDirection TextDirection { get; set; } = TextDirection.LeftToRight;
+
+        // TODO: editOptions
+
+        [JsonProperty("editurl")]
+        public string EditUrl { get; set; }
 
         private bool IsValid()
         {
@@ -104,6 +166,21 @@ namespace WebHelpers.Mvc5.JqGrid
             }
 
             if (CellSubmitUrl != null && CellSubmitDestination != DataDestination.Remote)
+            {
+                return false;
+            }
+
+            if (LocalData != null && !(DataType == DataType.XmlLocalData || DataType == DataType.JsonLocalData))
+            {
+                return false;
+            }
+
+            if ((DataType == DataType.XmlLocalData || DataType == DataType.JsonLocalData) && LocalData == null)
+            {
+                return false;
+            }
+
+            if (LocalDataArrayName != null && DataType != DataType.LocalDataArray)
             {
                 return false;
             }
