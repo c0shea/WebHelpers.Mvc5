@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using WebHelpers.Mvc5.JqGrid.Converters;
 
@@ -96,7 +97,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// http://www.guriddo.net/documentation/guriddo/javascript/user-guide/colmenu/
         /// </remarks>
         [JsonProperty("colMenu")]
-        public bool IsColumnMenuEnabled { get; set; }
+        public bool ShowColumnMenu { get; set; }
 
         [JsonProperty("colModel")]
         public List<Column> Columns { get; set; }
@@ -185,8 +186,65 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("footerrow")]
         public bool ShowFooter { get; set; }
 
+        /// <summary>
+        /// Specifies whether or not the adjacent column to the right will resize when a column's width
+        /// is changed so that the overall grid width is maintained. For example, reducing the width
+        /// of column 2 by 30px will increase the size of column 3 by 30px. There is no horizontal
+        /// scroll bar in this case. This option is not compatible with TODO: ShrinkToFit (ignore this if that one is true)
+        /// </summary>
+        [JsonProperty("forceFit")]
+        public bool ShouldForceFit { get; set; }
 
-        
+        /// <summary>
+        /// Specifies whether or not all the data is built and appended to the grid in the DOM in a single
+        /// bulk operation as opposed to row-by-row. It is enabled by default for best performance, but
+        /// it will not fire the afterInsertRow event. To use that event, set this option to false.
+        /// </summary>
+        [JsonProperty("gridview")]
+        [DefaultValue(true)]
+        public bool UseOptimizedRendering { get; set; } = true;
+
+        /// <summary>
+        /// Specifies whether or not grouping is enabled.
+        /// </summary>
+        [JsonProperty("grouping")]
+        public bool CanGroup { get; set; }
+
+        // TODO: groupingView
+
+        /// <summary>
+        /// Specifies whether or not the title attribute with the text from the column's label
+        /// is added to the column headers.
+        /// </summary>
+        [JsonProperty("headertitles")]
+        public bool ShowLabelOnColumnHeaderHover { get; set; }
+
+        /// <summary>
+        /// The height of the grid. Can be defined in pixels or as 100%. If 100% is specified,
+        /// the vertical scrollbar doesn't appear. To change the height dynamically, use the
+        /// setGridHeight method.
+        /// </summary>
+        [JsonProperty("height")]
+        public Unit Height { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the grid is initially hidden. Data is not loaded and only the
+        /// caption layer is shown. This option is only valid when <see cref="Caption"/> and
+        /// <see cref="ShowGridToggleButton"/> are set.
+        /// </summary>
+        [JsonProperty("hiddengrid")]
+        public bool IsHidden { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not the grid show/hide toggle button appears to the right side of the
+        /// caption layer. This option only has an effect when the <see cref="Caption"/> option is set.
+        /// </summary>
+        [JsonProperty("hidegrid")]
+        [DefaultValue(true)]
+        public bool ShowGridToggleButton { get; set; } = true;
+
+        // TODO: hoverrows
+
 
         private bool IsValid()
         {
@@ -220,6 +278,16 @@ namespace WebHelpers.Mvc5.JqGrid
                 return false;
             }
             // TODO: If tree grid only, then allow ExpandColumn
+
+            if (Height.Type != UnitType.Pixel || Height.Type != UnitType.Percentage)
+            {
+                return false;
+            }
+
+            if (Height.Type == UnitType.Percentage && Height.Value != 100)
+            {
+                return false;
+            }
 
             return true;
         }
