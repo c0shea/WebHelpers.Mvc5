@@ -61,5 +61,24 @@ namespace WebHelpers.Mvc5.Test
 
             Assert.AreEqual(expected, json);
         }
+
+        [TestMethod]
+        public void ColumnToExpand()
+        {
+            var grid = new Grid
+            {
+                Columns = new List<Column>
+                {
+                    new Column { Name = "One" },
+                    new Column { Name = "Two" }
+                }
+            };
+            grid.ColumnToExpand = grid.Columns[1];
+
+            var json = grid.ToString();
+            var expected = @"{colModel:[{name:""One""},{name:""Two""}],colNames:[""One"",""Two""],ExpandColumn:""Two""}";
+
+            Assert.AreEqual(expected, json);
+        }
     }
 }

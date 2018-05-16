@@ -168,9 +168,15 @@ namespace WebHelpers.Mvc5.JqGrid
         [DefaultValue(true)]
         public bool ShouldToggleOnColumnClick { get; set; } = true;
 
-        // TODO: Only serialize the Name of the column, not the entire object
+        /// <summary>
+        /// Indicates which column should be used to expand the tree grid. The first column is the default.
+        /// TODO: only when treegrid is true
+        /// </summary>
         [JsonProperty("ExpandColumn")]
-        public Column ExpandColumn { get; set; }
+        [JsonConverter(typeof(ColumnToExpandConverter))]
+        public Column ColumnToExpand { get; set; }
+
+        public bool ShouldSerializeColumnToExpand() => ColumnToExpand?.Name != null;
 
         /// <summary>
         /// Specifies whether or not to show a footer row below the grid records and above the pager.
@@ -180,7 +186,7 @@ namespace WebHelpers.Mvc5.JqGrid
         public bool ShowFooter { get; set; }
 
 
-
+        
 
         private bool IsValid()
         {
