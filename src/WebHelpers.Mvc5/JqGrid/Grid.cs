@@ -243,8 +243,55 @@ namespace WebHelpers.Mvc5.JqGrid
         [DefaultValue(true)]
         public bool ShowGridToggleButton { get; set; } = true;
 
-        // TODO: hoverrows
+        /// <summary>
+        /// Specifies whether or not the hover effect is enabled when the mouse is hovered over a row.
+        /// </summary>
+        [JsonProperty("hoverrows")]
+        [DefaultValue(true)]
+        public bool UseHoverRowEffect { get; set; } = true;
 
+        /// <summary>
+        /// The icon set to use. This option is only valid when the // TODO: StyleUI is Bootstrap4.
+        /// The appropriate icon set CSS file must be loaded for this to work.
+        /// </summary>
+        [JsonProperty("iconSet")]
+        public IconSet? IconSet { get; set; }
+
+        /// <summary>
+        /// The string to add as a prefix to the ID of every grid row upon construction.
+        /// This option is useful if two or more grids are rendered on the same page and there is
+        /// the possibility of them having ID collisions and equal grid names.
+        /// </summary>
+        [JsonProperty("idPrefix")]
+        public string IdPrefix { get; set; }
+
+        /// <summary>
+        /// Local searching is case-sensitive by default. To make local searching and sorting
+        /// case-insensitive, set this option to true.
+        /// </summary>
+        [JsonProperty("ignoreCase")]
+        public bool IsCaseInsensitive { get; set; }
+
+        // TODO: inlineData
+        // TODO: jsonReader (this should match the return type of the JSON model)
+        // TODO: keyName
+
+        /// <summary>
+        /// Specifies whether or not the grid loads the data from the server only once and automatically
+        /// changes to <see cref="DataDestination.Local"/> afterwards. All further manipulations
+        /// are then done on the client side and the <see cref="LocalDataArrayName"/> is filled with
+        /// the response data from the server.
+        /// </summary>
+        [JsonProperty("loadonce")]
+        public bool ShouldLoadOnce { get; set; }
+
+        /// <summary>
+        /// The text to display in the progress indicator when requesting and sorting data.
+        /// </summary>
+        [JsonProperty("loadtext")]
+        public string LoadingText { get; set; }
+
+        // TODO: loadui
 
         private bool IsValid()
         {
@@ -288,6 +335,8 @@ namespace WebHelpers.Mvc5.JqGrid
             {
                 return false;
             }
+
+            // TODO: IconSet only when Bootstrap4
 
             return true;
         }
