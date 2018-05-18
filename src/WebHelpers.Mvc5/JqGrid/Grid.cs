@@ -291,7 +291,36 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("loadtext")]
         public string LoadingText { get; set; }
 
-        // TODO: loadui
+        /// <summary>
+        /// Controls the load indicator when an AJAX operation is in progress.
+        /// </summary>
+        [JsonProperty("loadui")]
+        [DefaultValue(JqGrid.LoadIndicator.Enable)]
+        public LoadIndicator LoadIndicator { get; set; } = LoadIndicator.Enable;
+
+        /// <summary>
+        /// Specifies whether or not an icon is shown that allows user-defined actions.
+        /// To add or remove actions from the menubar, use the menubarAdd and menubarDelete methods.
+        /// </summary>
+        [JsonProperty("menubar")]
+        public bool ShowMenuBar { get; set; }
+
+        /// <summary>
+        /// The HTTP method to use when requesting data from the server.
+        /// </summary>
+        [JsonProperty("mtype")]
+        [DefaultValue(HttpMethod.Get)]
+        public HttpMethod HttpMethod { get; set; } = HttpMethod.Get;
+
+        /// <summary>
+        /// The minimum width of all grid columns when resizing.
+        /// </summary>
+        [JsonProperty("minColWidth")]
+        [DefaultValue(33)]
+        public int MinColumnWidth { get; set; } = 33;
+
+        // TODO: multiboxonly
+
 
         private bool IsValid()
         {
