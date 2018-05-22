@@ -110,6 +110,7 @@
     <Compile Include="JqGrid\IconSet.cs" />
     <Compile Include="JqGrid\LoadIndicator.cs" />
     <Compile Include="JqGrid\MultiSelectKey.cs" />
+    <Compile Include="JqGrid\PagerAlign.cs" />
     <Compile Include="JqGrid\SearchType.cs" />
     <Compile Include="JqGrid\SortOrder.cs" />
     <Compile Include="JqGrid\TextAlign.cs" />

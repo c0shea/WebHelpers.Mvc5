@@ -366,10 +366,80 @@ namespace WebHelpers.Mvc5.JqGrid
         [DefaultValue("")]
         public string Pager { get; set; } = "";
 
-        // TODO: pagerpos
+        /// <summary>
+        /// The position of the pager navigation buttons and record selection box in the grid.
+        /// The pager element is divided into 3 positions and only one element can be in a single
+        /// position. When changing this option, the <see cref="PagerRecordAlign"/> // TODO:  must be changed as well.
+        /// </summary>
+        [JsonProperty("pagerpos")]
+        [DefaultValue(PagerAlign.Center)]
+        public PagerAlign PagerNavigationAlign { get; set; } = PagerAlign.Center;
 
+        /// <summary>
+        /// Specifies whether or not the pager buttons should be shown if the pager is shown.
+        /// </summary>
+        [JsonProperty("pgbuttons")]
+        [DefaultValue(true)]
+        public bool ShowPagerButtons { get; set; } = true;
 
+        /// <summary>
+        /// Specifies whether or not the textbox that allows the user to enter the page number
+        /// to view is shown. The textbox appears between the pager buttons.
+        /// </summary>
+        [JsonProperty("pginput")]
+        [DefaultValue(true)]
+        public bool ShowPagerTextBox { get; set; } = true;
 
+        /// <summary>
+        /// The template for the current page status text. The default is "Page {0} of {1}".
+        /// </summary>
+        [JsonProperty("pgtext")]
+        public string PagerNavigationLabelTemplate { get; set; }
+
+        // TODO: prmNames
+
+        /// <summary>
+        /// The data appended directly to the // TODO: URL.
+        /// </summary>
+        [JsonProperty("postData")]
+        public object UrlParameters { get; set; }
+
+        /// <summary>
+        /// The position of the record information in the pager. The pager element is divided
+        /// into 3 positions and only one element can be in a single position.
+        /// When changing this option, the <see cref="PagerNavigationAlign"/> // TODO:  must be changed as well.
+        /// </summary>
+        [JsonProperty("recordpos")]
+        [DefaultValue(PagerAlign.Right)]
+        public PagerAlign PagerRecordAlign { get; set; } = PagerAlign.Right;
+
+        /// <summary>
+        /// The template for the record information text. This text is only displayed if the
+        /// number of records is greater than zero. The default is "View {0} - {1} of {2}".
+        /// </summary>
+        [JsonProperty("recordtext")]
+        public string PagerRecordLabelTemplate { get; set; }
+
+        /// <summary>
+        /// The two-letter code that correponds to the localization file (grid.locale-xx.js).
+        /// The language file must be loaded for this option to work.
+        /// </summary>
+        // TODO: Make this an enum of allowed language values
+        [JsonProperty("regional")]
+        [DefaultValue("en")]
+        public string Localization { get; set; } = "en";
+
+        // TODO: remapColumns
+        // TODO: resizeclass
+
+        /// <summary>
+        /// Specifies whether or not the grid is resized automatically to its parent container
+        /// when the width of the viewport is changed.
+        /// </summary>
+        [JsonProperty("responsive")]
+        public bool IsResponsive { get; set; }
+
+        // TODO: restoreCellonFail
 
         private bool IsValid()
         {
@@ -425,6 +495,9 @@ namespace WebHelpers.Mvc5.JqGrid
             {
                 return false;
             }
+
+            // TODO: PagerNavigationAlign and recordpos and otherone should be unique and not set to the same value
+
 
             return true;
         }
