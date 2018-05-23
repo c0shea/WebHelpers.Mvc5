@@ -439,7 +439,51 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("responsive")]
         public bool IsResponsive { get; set; }
 
-        // TODO: restoreCellonFail
+        /// <summary>
+        /// Specifies whether or not the cell should be set or restored to its initial state
+        /// on failure.
+        /// </summary>
+        [JsonProperty("restoreCellonFail")]
+        [DefaultValue(true)]
+        public bool ShouldRestoreCellOnFailure { get; set; } = true;
+
+        /// <summary>
+        /// The list of row count choices in the pager drop-down list. For example, if this option is
+        /// set to [10, 20, 50] and 20 is selected, it will set the // TODO: rownum to 20.
+        /// </summary>
+        [JsonProperty("rowList")]
+        public int[] PagerRowOptions { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not a new column is shown as the leftmost column in the grid containing
+        /// the row number, starting from one. The <see cref="Columns"/> model is automatically extended
+        /// with the new column with the reserved name "rn", hence columns in the model should not be named "rn".
+        /// </summary>
+        [JsonProperty("rownumbers")]
+        public bool ShowRowNumberColumn { get; set; }
+
+        /// <summary>
+        /// The number of rows to view in the grid. This option is passed to the server when requesting data.
+        /// If this option is set to 10 and the server returns 15 rows, only 10 rows will be loaded.
+        /// </summary>
+        [JsonProperty("rowNum")]
+        [DefaultValue(20)]
+        public int MaxRows { get; set; } = 20;
+
+        /// <summary>
+        /// The total number of rows on which the grid can operate. If specified, an additional parameter
+        /// "totalrows" is set to the server
+        /// </summary>
+        [JsonProperty("rowTotal")]
+        public int? TotalRows { get; set; }
+
+        [JsonProperty("rownumWidth")]
+        [DefaultValue(35)]
+        public int RowNumberColumnWidth { get; set; } = 35;
+
+        // TODO: searchOptions
+
+
 
         private bool IsValid()
         {
