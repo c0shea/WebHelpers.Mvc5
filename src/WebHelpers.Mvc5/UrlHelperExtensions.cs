@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using JetBrains.Annotations;
 
 namespace WebHelpers.Mvc5
@@ -20,6 +22,26 @@ namespace WebHelpers.Mvc5
         {
             if (url.RequestContext.RouteData.Values["controller"].ToString() == controllerName &&
                 url.RequestContext.RouteData.Values["action"].ToString() == actionName)
+            {
+                return "active";
+            }
+
+            return "";
+        }
+
+        /// <summary>
+        /// Gets the CSS class to use for the treeview state. If the current request route matches
+        /// any of the <paramref name="actions"/>, the "active" class is returned.
+        /// </summary>
+        /// <param name="url">The <see cref="UrlHelper"/>.</param>
+        /// <param name="actions">A collection of KeyValuePairs, where the key is the action and the value is the controller.</param>
+        /// <returns></returns>
+        public static string IsTreeviewActive(this UrlHelper url, Dictionary<string, string> actions)
+        {
+            var controller = url.RequestContext.RouteData.Values["controller"].ToString();
+            var action = url.RequestContext.RouteData.Values["action"].ToString();
+
+            if (actions.Any(a => a.Key == action && a.Value == controller))
             {
                 return "active";
             }

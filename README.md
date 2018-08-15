@@ -40,6 +40,28 @@ into this:
 </li>
 ```
 
+## IsTreeviewActive
+
+Similar to `IsLinkActive`, this makes it easy to determine whether the treeview is the active link.
+
+```
+@{
+    var treeviewActions = new Dictionary<string, string>
+    {
+        { "Action", "Controller" }
+    };
+}
+
+<li class="treeview @Url.IsTreeviewActive(treeviewActions)">
+    <a href="#"><i class="fa fa-cogs"></i> <span>Action</span> <i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li class="@Url.IsLinkActive("Action", "Controller")">
+            <a href="@Url.Action("Action", "Controller")"><i class="fa fa-trash"></i> <span>Action</span></a>
+        </li>
+    </ul>
+</li>
+```
+
 ## AddVersion
 
 Adds a cache-busting version number, which is the number of ticks since the last write time of the file,
@@ -95,4 +117,15 @@ protected void Application_Start()
 {
     EnumHandler.EnumsToExpose.Include(typeof(MyEnum));
 }
+```
+
+## ClientIP
+
+Gets the IP address of the client sending the request. This method will return the originating
+IP if specified by a proxy but makes no guarantee that this is the client's true IP address.
+Since these headers can be spoofed, you are encouraged to perform additional validation if
+you are using the IP in a sensitive context.
+
+```
+var ip = HttpContext.Current.Request.ClientIP();
 ```
