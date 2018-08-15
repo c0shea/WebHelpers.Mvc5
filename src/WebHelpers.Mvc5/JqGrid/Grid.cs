@@ -553,6 +553,7 @@ namespace WebHelpers.Mvc5.JqGrid
                 NullValueHandling = NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Ignore
             };
+
             using (var stringWriter = new StringWriter())
             using (var writer = new JsonTextWriter(stringWriter) { QuoteName = false })
             {

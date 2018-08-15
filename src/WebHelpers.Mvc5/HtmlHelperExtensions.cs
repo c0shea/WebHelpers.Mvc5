@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 using WebHelpers.Mvc5.JqGrid;
 
 namespace WebHelpers.Mvc5
@@ -16,6 +10,7 @@ namespace WebHelpers.Mvc5
     /// </summary>
     public static class HtmlHelperExtensions
     {
+#if DEBUG
         public static IHtmlString JqGrid(this HtmlHelper helper)
         {
             var grid = new Grid
@@ -88,5 +83,6 @@ namespace WebHelpers.Mvc5
             
             return new MvcHtmlString(grid.ToString());
         }
+#endif
     }
 }
