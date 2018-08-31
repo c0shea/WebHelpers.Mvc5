@@ -80,5 +80,25 @@ namespace WebHelpers.Mvc5.Test
 
             Assert.AreEqual(expected, json);
         }
+
+        [TestMethod]
+        public void VirtualScrollMode()
+        {
+            var grid = new Grid
+            {
+                VirtualScrollMode = JqGrid.VirtualScrollMode.Infinite
+            };
+
+            var json = grid.ToString();
+            var infinite = "{scroll:true}";
+
+            Assert.AreEqual(infinite, json);
+
+            grid.VirtualScrollMode = JqGrid.VirtualScrollMode.OnlyVisibleRows;
+            json = grid.ToString();
+            var onlyVisibleRows = "{scroll:1}";
+
+            Assert.AreEqual(onlyVisibleRows, json);
+        }
     }
 }

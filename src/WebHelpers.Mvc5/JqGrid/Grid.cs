@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using WebHelpers.Mvc5.JqGrid.Converters;
+using TimeSpanConverter = WebHelpers.Mvc5.JqGrid.Converters.TimeSpanConverter;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
@@ -483,6 +482,50 @@ namespace WebHelpers.Mvc5.JqGrid
 
         // TODO: searchOptions
 
+        /// <summary>
+        /// Specifies whether or not to use a dynamic virtual scroll mode.
+        /// </summary>
+        [JsonProperty("scroll")]
+        [DefaultValue(VirtualScrollMode.Disabled)]
+        public VirtualScrollMode VirtualScrollMode { get; set; } = VirtualScrollMode.Disabled;
+
+        /// <summary>
+        /// The maximum rows the grid can load when the <see cref="ScrollOption"/> is set to <see cref="ScrollOption.VisibleLines"/>.
+        /// It is recommended that you set this value greater than <see cref="MaxRows"/>, otherwise it will
+        /// default to the <see cref="MaxRows"/> value.
+        /// </summary>
+        [JsonProperty("scrollMaxBuffer")]
+        public int ScrollMaxRows { get; set; }
+
+        // TODO: scrollLeftOffset
+
+        /// <summary>
+        /// The width of the vertical scrollbar.
+        /// </summary>
+        [JsonProperty("scrollOffset")]
+        [DefaultValue(18)]
+        public int VerticalScrollbarWidth { get; set; } = 18;
+
+        /// <summary>
+        /// The top offset from the upper position of the scroll element.
+        /// </summary>
+        [JsonProperty("scrollTopOffset")]
+        public int VerticalScrollbarTopOffset { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not a pop-up with page information is displayed when virtual scrolling is enabled.
+        /// The pop-up changes its position relative to the position of the scroll element.
+        /// </summary>
+        [JsonProperty("scrollPopUp")]
+        public bool ShowVirtualScrollInfoPopUp { get; set; }
+
+        [JsonProperty("scrollTimeout")]
+        [JsonConverter(typeof(TimeSpanConverter))]
+        public TimeSpan VirtualScrollTimeout { get; set; } = TimeSpan.FromMilliseconds(40);
+
+        public bool ShouldSerializeVirtualScrollTimeout() => VirtualScrollTimeout != TimeSpan.FromMilliseconds(40);
+
+        // TODO: scrollrows
 
 
         private bool IsValid()
