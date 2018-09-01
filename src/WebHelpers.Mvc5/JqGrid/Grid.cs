@@ -547,17 +547,16 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("sortable")]
         public bool CanReorderColumns { get; set; }
 
-        // TODO: sortname
-
         /// <summary>
         /// The column according to which the data is to be sorted when the grid is initially loaded.
         /// Use in conjunction with <see cref="InitialColumnSortOrder"/>.
         /// </summary>
         [JsonProperty("sortname")]
-        public string InitialColumnNameToSort { get; set; }
+        [JsonConverter(typeof(ColumnNameConverter))]
+        public Column InitialColumnToSort { get; set; }
 
         /// <summary>
-        /// The sort order to use when the grid is initially loaded and sorted by the <see cref="InitialColumnNameToSort"/>.
+        /// The sort order to use when the grid is initially loaded and sorted by the <see cref="InitialColumnToSort"/>.
         /// </summary>
         [JsonProperty("sortorder")]
         [DefaultValue(SortOrder.Ascending)]
