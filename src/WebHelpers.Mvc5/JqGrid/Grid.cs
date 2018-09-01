@@ -173,7 +173,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// TODO: only when treegrid is true
         /// </summary>
         [JsonProperty("ExpandColumn")]
-        [JsonConverter(typeof(ColumnToExpandConverter))]
+        [JsonConverter(typeof(ColumnNameConverter))]
         public Column ColumnToExpand { get; set; }
 
         public bool ShouldSerializeColumnToExpand() => ColumnToExpand?.Name != null;

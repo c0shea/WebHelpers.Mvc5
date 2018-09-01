@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
-    public class ColumnToExpandConverter : JsonConverter
+    public class ColumnNameConverter : JsonConverter
     {
         public override bool CanRead => false;
 

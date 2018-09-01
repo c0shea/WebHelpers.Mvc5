@@ -87,7 +87,7 @@
     <Compile Include="Enum\ExposeInJavaScriptAttribute.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="HttpRequestExtensions.cs" />
-    <Compile Include="JqGrid\Converters\ColumnToExpandConverter.cs" />
+    <Compile Include="JqGrid\Converters\ColumnNameConverter.cs" />
     <Compile Include="JqGrid\Converters\LiteralEnumConverter.cs" />
     <Compile Include="JqGrid\Converters\TimeSpanConverter.cs" />
     <Compile Include="JqGrid\DataDestination.cs" />
