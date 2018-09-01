@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WebHelpers.Mvc5.JqGrid.ColumnFormatOptions;
 using WebHelpers.Mvc5.JqGrid.Converters;
