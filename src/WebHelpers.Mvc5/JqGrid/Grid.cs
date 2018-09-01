@@ -574,9 +574,22 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("styleUI")]
         public Style Style { get; set; } = Style.Bootstrap3;
 
+        [JsonProperty("subGrid")]
+        public bool HasSubgrid { get; set; }
 
-
-
+        // TODO: subGridOptions
+        // TODO: subGridModel
+        // TODO: subgridtype
+        // TODO: subGridUrl
+        // TODO: subGridWith
+        // TODO: toolbar
+        // TODO: toppager
+        // TODO: treeGrid
+        // TODO: treeGrid_bigData
+        // TODO: treeGridModel
+        // TODO: treeIcons
+        // TODO: treeReader
+        // TODO: tree_root_level
 
         private bool IsValid()
         {
