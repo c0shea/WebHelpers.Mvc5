@@ -2,7 +2,7 @@
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class EmailColumnFormatOptions : ColumnFormatOptions
+    public sealed class EmailColumnFormatOptions : ColumnFormatOptions
     {
         [JsonIgnore]
         public static string Name => "email";

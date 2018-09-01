@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class CheckBoxColumnFormatOptions : ColumnFormatOptions
+    public sealed class CheckBoxColumnFormatOptions : ColumnFormatOptions
     {
         [JsonIgnore]
         public static string Name => "checkbox";

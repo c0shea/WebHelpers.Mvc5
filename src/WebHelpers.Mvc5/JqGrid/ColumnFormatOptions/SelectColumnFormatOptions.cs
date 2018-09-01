@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class SelectColumnFormatOptions : ColumnFormatOptions
+    public sealed class SelectColumnFormatOptions : ColumnFormatOptions
     {
         [JsonIgnore]
         public static string Name => "select";

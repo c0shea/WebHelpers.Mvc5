@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class ShowLinkColumnFormatOptions : LinkColumnFormatOptions
+    public sealed class ShowLinkColumnFormatOptions : LinkColumnFormatOptions
     {
         [JsonIgnore]
         public new static string Name => "showLink";

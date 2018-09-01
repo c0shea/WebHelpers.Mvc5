@@ -4,7 +4,7 @@ using WebHelpers.Mvc5.JqGrid.Converters;
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class ActionColumnFormatOptions : ColumnFormatOptions
+    public sealed class ActionColumnFormatOptions : ColumnFormatOptions
     {
         [JsonIgnore]
         public static string Name => "actions";

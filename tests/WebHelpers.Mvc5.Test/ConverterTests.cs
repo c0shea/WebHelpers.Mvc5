@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using WebHelpers.Mvc5.JqGrid.ColumnFormatOptions;
 using WebHelpers.Mvc5.JqGrid.Converters;
 
 namespace WebHelpers.Mvc5.Test
@@ -36,6 +37,15 @@ namespace WebHelpers.Mvc5.Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void FormatterNameConverter()
+        {
+            var actual = JsonConvert.SerializeObject(new FormatterNameConverterTest());
+            var expected = @"{""BuiltInFormatter"":""integer"",""CustomFormatter"":customFormatMethod}";
+
+            Assert.AreEqual(expected, actual);
+        }
+
         private class TimeSpanConverterTest
         {
             [JsonConverter(typeof(TimeSpanConverter))]
@@ -65,6 +75,15 @@ namespace WebHelpers.Mvc5.Test
             Two,
             
             Three
+        }
+
+        private class FormatterNameConverterTest
+        {
+            [JsonConverter(typeof(FormatterNameConverter))]
+            public string BuiltInFormatter { get; set; } = IntegerColumnFormatOptions.Name;
+
+            [JsonConverter(typeof(FormatterNameConverter))]
+            public string CustomFormatter { get; set; } = "customFormatMethod";
         }
     }
 }

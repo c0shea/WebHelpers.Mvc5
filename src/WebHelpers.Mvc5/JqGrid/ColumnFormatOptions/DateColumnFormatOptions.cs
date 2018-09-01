@@ -2,7 +2,7 @@
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class DateColumnFormatOptions : ColumnFormatOptions
+    public sealed class DateColumnFormatOptions : ColumnFormatOptions
     {
         [JsonIgnore]
         public static string Name => "date";

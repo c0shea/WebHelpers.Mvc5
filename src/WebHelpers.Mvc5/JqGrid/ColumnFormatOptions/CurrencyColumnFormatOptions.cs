@@ -2,7 +2,7 @@
 
 namespace WebHelpers.Mvc5.JqGrid.ColumnFormatOptions
 {
-    public class CurrencyColumnFormatOptions : NumberColumnFormatOptions
+    public sealed class CurrencyColumnFormatOptions : NumberColumnFormatOptions
     {
         [JsonIgnore]
         public new static string Name => "currency";
