@@ -591,6 +591,39 @@ namespace WebHelpers.Mvc5.JqGrid
         // TODO: treeReader
         // TODO: tree_root_level
 
+        /// <summary>
+        /// The URL that returns the data needed to populate the grid.
+        /// </summary>
+        [JsonProperty("url")]
+        public string DataUrl { get; set; }
+
+        // TODO: userDataOnFooter
+
+        /// <summary>
+        /// Specifies whether or not the grid performs the search by <see cref="Column.Name"/> instead
+        /// of by <see cref="Column.Index"/> when the data type is local.
+        /// </summary>
+        [JsonProperty("useNameForSearch")]
+        public bool UseNameForLocalSearch { get; set; }
+
+        // TODO: viewOptions
+
+        /// <summary>
+        /// Specifies whether or not "View X to Y out of Z" is shown in the pager bar.
+        /// </summary>
+        [JsonProperty("viewrecords")]
+        public bool ShowPagerRowCount { get; set; }
+
+        // TODO: viewsortcols
+
+        /// <summary>
+        /// The width of the grid, in pixels. If this option is not set, the width of the grid is the sum
+        /// of the widths of the columns. If this option is set, the initial width of each column is set
+        /// according to the value of the <see cref="ShouldShrinkToFit"/> option.
+        /// </summary>
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+        
         private bool IsValid()
         {
             if (Columns != null)

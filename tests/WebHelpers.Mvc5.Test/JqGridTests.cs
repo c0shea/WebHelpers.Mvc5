@@ -23,7 +23,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}],colNames:[""One"",""Two"",""Three""]}";
+            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}],colNames:[""One"",""Two"",""Three""],styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -40,7 +40,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{formatter:""integer"",name:""One""}],colNames:[""One""]}";
+            var expected = @"{colModel:[{formatter:""integer"",name:""One""}],colNames:[""One""],styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -57,7 +57,7 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{formatter:MyCustomJsFunc,name:""One""}],colNames:[""One""]}";
+            var expected = @"{colModel:[{formatter:MyCustomJsFunc,name:""One""}],colNames:[""One""],styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -76,7 +76,7 @@ namespace WebHelpers.Mvc5.Test
             grid.ColumnToExpand = grid.Columns[1];
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One""},{name:""Two""}],colNames:[""One"",""Two""],ExpandColumn:""Two""}";
+            var expected = @"{colModel:[{name:""One""},{name:""Two""}],colNames:[""One"",""Two""],ExpandColumn:""Two"",styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -90,13 +90,13 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var infinite = "{scroll:true}";
+            var infinite = @"{scroll:true,styleUI:""Bootstrap""}";
 
             Assert.AreEqual(infinite, json);
 
             grid.VirtualScrollMode = JqGrid.VirtualScrollMode.OnlyVisibleRows;
             json = grid.ToString();
-            var onlyVisibleRows = "{scroll:1}";
+            var onlyVisibleRows = @"{scroll:1,styleUI:""Bootstrap""}";
 
             Assert.AreEqual(onlyVisibleRows, json);
         }
