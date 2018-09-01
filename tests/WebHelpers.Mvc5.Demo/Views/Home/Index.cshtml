@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.Description = "Home Page";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-md-5">
+        <div class="box box-default">
+            <div class="box-header">
+                <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <div>
+                        <input type="checkbox" class="form-control" checked="checked"> Checkbox
+                    </div>
+                    <div>
+                        <input type="checkbox" class="form-control"> Checkbox
+                    </div>
+                    <div>
+                        <input type="checkbox" class="form-control" disabled="disabled"> Disabled Checkbox
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="radio" class="form-control" checked="checked"> Radio Button
+                    </div>
+                    <div>
+                        <input type="radio" class="form-control"> Radio Button
+                    </div>
+                    <div>
+                        <input type="radio" class="form-control" disabled="disabled"> Disabled Radio Button
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-7">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Bootstrap-Select</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Minimal</label>
+                            <select class="selectpicker">
+                                <optgroup label="Picnic">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </optgroup>
+                                <optgroup label="Camping">
+                                    <option>Tent</option>
+                                    <option>Flashlight</option>
+                                    <option>Toilet Paper</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Disabled</label>
+                            <select class="selectpicker" disabled>
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Multiple</label>
+                            <select class="selectpicker" multiple>
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Subtext</label>
+                            <select class="selectpicker" data-show-subtext="true">
+                                <option data-subtext="French's">Mustard</option>
+                                <option data-subtext="Heinz">Ketchup</option>
+                                <option data-subtext="Sweet">Relish</option>
+                                <option data-subtext="Miracle Whip">Mayonnaise</option>
+                                <option data-divider="true"></option>
+                                <option data-subtext="Honey">Barbecue Sauce</option>
+                                <option data-subtext="Ranch">Salad Dressing</option>
+                                <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
+                                <option data-subtext="Chunky">Salsa</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <div class="box box-default">
+            <div class="box-header">
+                Date Picker
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Date:</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right datepicker">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="box box-danger">
+            <div class="box-header">
+                <h3 class="box-title">Input masks</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Date masks:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>US phone mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Intl US phone mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>IP mask:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

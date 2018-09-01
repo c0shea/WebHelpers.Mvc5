@@ -37,7 +37,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// <summary>
         /// Specifies whether or not the grid's width is calculated automatically to the width
         /// of the parent element on initial grid creation. In order to resize the grid when the
-        /// parent element or window changes, use the <see cref="Responsive"/> parameter instead.
+        /// parent element or window changes, use the <see cref="IsResponsive"/> parameter instead.
         /// </summary>
         [JsonProperty("autowidth")]
         public bool IsInitialWidthAutomatic { get; set; }
@@ -490,7 +490,7 @@ namespace WebHelpers.Mvc5.JqGrid
         public VirtualScrollMode VirtualScrollMode { get; set; } = VirtualScrollMode.Disabled;
 
         /// <summary>
-        /// The maximum rows the grid can load when the <see cref="ScrollOption"/> is set to <see cref="ScrollOption.VisibleLines"/>.
+        /// The maximum rows the grid can load when the <see cref="VirtualScrollMode"/> is set to <see cref="VirtualScrollMode.OnlyVisibleRows"/>.
         /// It is recommended that you set this value greater than <see cref="MaxRows"/>, otherwise it will
         /// default to the <see cref="MaxRows"/> value.
         /// </summary>
