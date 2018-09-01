@@ -525,7 +525,57 @@ namespace WebHelpers.Mvc5.JqGrid
 
         public bool ShouldSerializeVirtualScrollTimeout() => VirtualScrollTimeout != TimeSpan.FromMilliseconds(40);
 
-        // TODO: scrollrows
+        /// <summary>
+        /// Specifies whether or not the grid is scrolled so that the selected row is visible when
+        /// a row is selected via setSelection.
+        /// </summary>
+        [JsonProperty("scrollrows")]
+        public bool ShouldScrollToSelectedRow { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not automatic resizing takes place in proportion to each columns' width
+        /// to fit within the bounds of the grid's width.
+        /// </summary>
+        [JsonProperty("shrinkToFit")]
+        [DefaultValue(true)]
+        public bool ShouldShrinkToFit { get; set; } = true;
+
+        /// <summary>
+        /// Specifies whether or not reordering columns by dragging and dropping them with the mouse
+        /// is enabled.
+        /// </summary>
+        [JsonProperty("sortable")]
+        public bool CanReorderColumns { get; set; }
+
+        // TODO: sortname
+
+        /// <summary>
+        /// The column according to which the data is to be sorted when the grid is initially loaded.
+        /// Use in conjunction with <see cref="InitialColumnSortOrder"/>.
+        /// </summary>
+        [JsonProperty("sortname")]
+        public string InitialColumnNameToSort { get; set; }
+
+        /// <summary>
+        /// The sort order to use when the grid is initially loaded and sorted by the <see cref="InitialColumnNameToSort"/>.
+        /// </summary>
+        [JsonProperty("sortorder")]
+        [DefaultValue(SortOrder.Ascending)]
+        public SortOrder InitialColumnSortOrder { get; set; } = SortOrder.Ascending;
+
+        /// <summary>
+        /// Specifies whether or not the navigation options are stored in the grid options when
+        /// the grid state is saved or restored.
+        /// </summary>
+        [JsonProperty("storeNavOptions")]
+        public bool ShouldStoreNavigationOptions { get; set; }
+
+        // DefaultValue isn't specified since my default preference is different from jqGrid's default
+        [JsonProperty("styleUI")]
+        public Style Style { get; set; } = Style.Bootstrap3;
+
+
+
 
 
         private bool IsValid()

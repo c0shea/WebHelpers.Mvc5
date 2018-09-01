@@ -81,7 +81,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
         /// <summary>
         /// Specifies whether or not recalculation of the width of the column is allowed if the
-        /// TODO: ShrinkToFit option is true. The width also doesn't change if the <code>setGridWith</code>
+        /// <see cref="Grid.ShouldShrinkToFit"/> option is true. The width also doesn't change if the <code>setGridWith</code>
         /// method is used to change the grid's with.
         /// </summary>
         [JsonProperty("fixed")]
