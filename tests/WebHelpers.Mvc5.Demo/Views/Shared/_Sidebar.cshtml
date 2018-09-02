@@ -1,37 +1,33 @@
 ﻿@using WebHelpers.Mvc5
+@{
+    var treeviewActions = new Dictionary<string, string>
+{
+{ "Json", "LoadData" },
+{ "Array", "LoadData" }
+};
+}
+
 <aside class="main-sidebar">
     <section class="sidebar">
-        @* BEGIN Search *@
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </form>
-        @* END Search *@
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">HEADER</li>
             <li class="@Url.IsLinkActive("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
             </li>
-            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
-                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
-            </li>
-            <li class="treeview">
+            <li class="treeview @Url.IsTreeviewActive(treeviewActions)">
                 <a href="#">
-                    <i class="fa fa-link"></i> <span>Multilevel</span>
+                    <i class="fa fa-table"></i> <span>Loading Data</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li class="@Url.IsLinkActive("Json", "LoadData")">
+                        <a href="@Url.Action("Json", "LoadData")">Load from JSON</a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Array", "LoadData")">
+                        <a href="@Url.Action("Array", "LoadData")">Load from JavaScript Array</a>
+                    </li>
                 </ul>
             </li>
         </ul>

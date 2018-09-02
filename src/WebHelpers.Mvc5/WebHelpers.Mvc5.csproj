@@ -111,6 +111,7 @@
     <Compile Include="JqGrid\Grid.cs" />
     <Compile Include="JqGrid\HttpMethod.cs" />
     <Compile Include="JqGrid\IconSet.cs" />
+    <Compile Include="JqGrid\JqGridHelper.cs" />
     <Compile Include="JqGrid\LoadIndicator.cs" />
     <Compile Include="JqGrid\Locale.cs" />
     <Compile Include="JqGrid\MultiSelectKey.cs" />

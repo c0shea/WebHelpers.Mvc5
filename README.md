@@ -129,3 +129,11 @@ you are using the IP in a sensitive context.
 ```
 var ip = HttpContext.Current.Request.ClientIP();
 ```
+
+## jqGrid
+
+### License
+
+jqGrid is not licensed under the MIT license like this project. See [here](http://guriddo.net/?page_id=103334)
+for its license. It is only included in the Demo project for the purposes of demonstration
+in a non-commercial capacity.

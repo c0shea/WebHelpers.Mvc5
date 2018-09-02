@@ -107,8 +107,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\ui.jqgrid-bootstrap.css" />
+    <Content Include="Content\js\plugins\jqgrid\grid.locale-en.js" />
+    <Content Include="Content\js\plugins\jqgrid\jquery.jqGrid.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
+    <Content Include="Views\LoadData\Json.cshtml" />
+    <Content Include="Views\LoadData\Array.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -117,6 +122,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\LoadDataController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -126,9 +132,6 @@
     <Content Include="packages.config" />
     <Content Include="Content\css\AdminLTE.css" />
     <Content Include="Content\css\AdminLTE.min.css" />
-    <Content Include="Content\css\bootstrap-datepicker3.min.css" />
-    <Content Include="Content\css\bootstrap-select.css" />
-    <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\icheck\aero.css" />
@@ -189,20 +192,12 @@
     <Content Include="Content\js\init.js" />
     <Content Include="Content\js\plugins\bootstrap\bootstrap.js" />
     <Content Include="Content\js\plugins\bootstrap\bootstrap.min.js" />
-    <Content Include="Content\js\plugins\bootstrap-select\bootstrap-select.js" />
-    <Content Include="Content\js\plugins\bootstrap-select\bootstrap-select.min.js" />
-    <Content Include="Content\js\plugins\datepicker\bootstrap-datepicker.js" />
-    <Content Include="Content\js\plugins\datepicker\bootstrap-datepicker.min.js" />
     <Content Include="Content\js\plugins\fastclick\fastclick.js" />
     <Content Include="Content\js\plugins\fastclick\fastclick.min.js" />
     <Content Include="Content\js\plugins\icheck\icheck.js" />
     <Content Include="Content\js\plugins\icheck\icheck.min.js" />
-    <Content Include="Content\js\plugins\inputmask\jquery.inputmask.bundle.js" />
-    <Content Include="Content\js\plugins\inputmask\jquery.inputmask.bundle.min.js" />
     <Content Include="Content\js\plugins\jquery\jquery-3.3.1.js" />
     <Content Include="Content\js\plugins\jquery\jquery-3.3.1.min.js" />
-    <Content Include="Content\js\plugins\moment\moment.js" />
-    <Content Include="Content\js\plugins\moment\moment.min.js" />
     <Content Include="Content\js\plugins\slimscroll\jquery.slimscroll.js" />
     <Content Include="Content\js\plugins\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\js\plugins\validator\validator.js" />
@@ -212,7 +207,6 @@
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_ControlSidebar.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
