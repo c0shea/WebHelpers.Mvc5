@@ -1,7 +1,8 @@
-﻿
+﻿@using WebHelpers.Mvc5
+@using WebHelpers.Mvc5.JqGrid
+
 @{
     ViewBag.Title = "Json";
 }
 
-<h2>Json</h2>
-
+@Html.JqGrid().Render(new Grid("Json"))

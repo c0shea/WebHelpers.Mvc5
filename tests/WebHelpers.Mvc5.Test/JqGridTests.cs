@@ -11,7 +11,7 @@ namespace WebHelpers.Mvc5.Test
         [TestMethod]
         public void ColumnsWithDefaults()
         {
-            var grid = new Grid
+            var grid = new Grid("Test")
             {
                 Columns = new List<Column>
                 {
@@ -30,7 +30,7 @@ namespace WebHelpers.Mvc5.Test
         [TestMethod]
         public void FormatterNameBuiltIn()
         {
-            var grid = new Grid
+            var grid = new Grid("Test")
             {
                 Columns = new List<Column>
                 {
@@ -47,7 +47,7 @@ namespace WebHelpers.Mvc5.Test
         [TestMethod]
         public void FormatterNameCustom()
         {
-            var grid = new Grid
+            var grid = new Grid("Test")
             {
                 Columns = new List<Column>
                 {
@@ -64,7 +64,7 @@ namespace WebHelpers.Mvc5.Test
         [TestMethod]
         public void ColumnToExpand()
         {
-            var grid = new Grid
+            var grid = new Grid("Test")
             {
                 Columns = new List<Column>
                 {
@@ -83,7 +83,7 @@ namespace WebHelpers.Mvc5.Test
         [TestMethod]
         public void VirtualScrollMode()
         {
-            var grid = new Grid
+            var grid = new Grid("Test")
             {
                 VirtualScrollMode = JqGrid.VirtualScrollMode.Infinite
             };
