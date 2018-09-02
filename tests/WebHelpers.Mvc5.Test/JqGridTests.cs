@@ -13,6 +13,7 @@ namespace WebHelpers.Mvc5.Test
         {
             var grid = new Grid("Test")
             {
+                ShowPager = false,
                 Columns = new List<Column>
                 {
                     new Column { Name = "One" },
@@ -32,6 +33,7 @@ namespace WebHelpers.Mvc5.Test
         {
             var grid = new Grid("Test")
             {
+                ShowPager = false,
                 Columns = new List<Column>
                 {
                     new Column { Name = "One", FormatterName = IntegerColumnFormatOptions.Name }
@@ -49,6 +51,7 @@ namespace WebHelpers.Mvc5.Test
         {
             var grid = new Grid("Test")
             {
+                ShowPager = false,
                 Columns = new List<Column>
                 {
                     new Column { Name = "One", FormatterName = "MyCustomJsFunc" }
@@ -66,6 +69,7 @@ namespace WebHelpers.Mvc5.Test
         {
             var grid = new Grid("Test")
             {
+                ShowPager = false,
                 Columns = new List<Column>
                 {
                     new Column { Name = "One" },
@@ -85,6 +89,7 @@ namespace WebHelpers.Mvc5.Test
         {
             var grid = new Grid("Test")
             {
+                ShowPager = false,
                 VirtualScrollMode = JqGrid.VirtualScrollMode.Infinite
             };
 

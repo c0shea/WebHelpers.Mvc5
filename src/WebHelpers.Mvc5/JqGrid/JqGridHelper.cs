@@ -41,6 +41,7 @@ namespace WebHelpers.Mvc5.JqGrid
             return script.ToString();
         }
 
+        // TODO: This isn't working because $ isn't defined yet since this is inserted into the DOM before the jQuery script tag. Need to provide an option to defer.
         private string Initialize(Grid grid)
         {
             var sb = new StringBuilder();

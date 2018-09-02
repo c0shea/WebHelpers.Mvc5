@@ -368,21 +368,14 @@ namespace WebHelpers.Mvc5.JqGrid
         /// Specifies whether or not the pager bar is shown.
         /// </summary>
         [JsonIgnore]
-        public bool ShowPager
-        {
-            get => _showPager;
-            set
-            {
-                _showPager = value;
-                Pager = $"{Name}-pager";
-            }
-        }
-        
+        public bool ShowPager { get; set; } = true;
+
         /// <summary>
         /// The HTML ID reference to the pager bar used to navigate through the records.
         /// </summary>
         [JsonProperty("pager")]
-        public string Pager { get; private set; }
+        [DefaultValue("")]
+        public string Pager => ShowPager ? $"{Name}-pager" : "";
 
         /// <summary>
         /// The position of the pager navigation buttons and record selection box in the grid.
@@ -644,7 +637,6 @@ namespace WebHelpers.Mvc5.JqGrid
         public Grid(string name)
         {
             Name = name;
-            ShowPager = true;
         }
 
         private bool IsValid()
