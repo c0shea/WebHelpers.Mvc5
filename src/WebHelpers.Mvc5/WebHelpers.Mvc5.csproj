@@ -114,6 +114,7 @@
     <Compile Include="JqGrid\JqGridHelper.cs" />
     <Compile Include="JqGrid\LoadIndicator.cs" />
     <Compile Include="JqGrid\Locale.cs" />
+    <Compile Include="JqGrid\Helper.cs" />
     <Compile Include="JqGrid\MultiSelectKey.cs" />
     <Compile Include="JqGrid\PagerAlign.cs" />
     <Compile Include="JqGrid\SearchType.cs" />
