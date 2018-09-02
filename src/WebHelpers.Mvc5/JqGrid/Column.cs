@@ -208,7 +208,13 @@ namespace WebHelpers.Mvc5.JqGrid
 
         // TODO: sortfunc
 
-        // TODO: sorttype
+        /// <summary>
+        /// The sort method to use for the values in the column for searching and sorting
+        /// when the <see cref="DataType"/> is local.
+        /// </summary>
+        [JsonProperty("sorttype")]
+        [DefaultValue(SortType.String)]
+        public SortType SortType { get; set; } = SortType.String;
 
         /// <summary>
         /// The search input type of the field. If <see cref="SearchType.Custom"/> is specified, use the

@@ -14,8 +14,8 @@
             new Column("CategoryName"),
             new Column("ProductName"),
             new Column("Country"),
-            new Column("Price"),
-            new Column("Quantity")
+            new Column("Price"){SortType = SortType.Decimal},
+            new Column("Quantity"){SortType = SortType.Integer}
         }
     };
 }

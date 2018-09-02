@@ -118,6 +118,7 @@
     <Compile Include="JqGrid\PagerAlign.cs" />
     <Compile Include="JqGrid\SearchType.cs" />
     <Compile Include="JqGrid\SortOrder.cs" />
+    <Compile Include="JqGrid\SortType.cs" />
     <Compile Include="JqGrid\Style.cs" />
     <Compile Include="JqGrid\TextAlign.cs" />
     <Compile Include="JqGrid\TextDirection.cs" />

@@ -47,7 +47,8 @@ namespace WebHelpers.Mvc5.JqGrid
 
             return new Column(propertyName)
             {
-                Label = FromPascalCase(propertyName)
+                Label = FromPascalCase(propertyName),
+                
             };
         }
 
