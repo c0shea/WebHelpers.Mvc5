@@ -8,9 +8,9 @@ namespace WebHelpers.Mvc5
     /// </summary>
     public static class HtmlHelperExtensions
     {
-        public static JqGridHelper JqGrid(this HtmlHelper helper)
+        public static JqGridHelper<TModel> JqGrid<TModel>(this HtmlHelper<TModel> htmlHelper)
         {
-            return new JqGridHelper();
+            return new JqGridHelper<TModel>();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@using WebHelpers.Mvc5
 @using WebHelpers.Mvc5.JqGrid
-
+@model WebHelpers.Mvc5.Demo.Models.Product
 @{
     ViewBag.Title = "Json";
     var grid = new Grid("json")
@@ -24,7 +24,9 @@
     <div class="box-body">
         <div class="row">
             <div class="col-xs-12">
-                @Html.JqGrid().Render(grid)        
+                @Html.JqGrid().Render(grid)
+                @Html.JqGrid().ColumnFor(c => c.CategoryName)
+                @Html.JqGrid().ColumnFor(c => c.Price)
             </div>
         </div>
     </div>

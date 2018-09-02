@@ -1,11 +1,20 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
-    public class JqGridHelper
+    public class JqGridHelper<TModel>
     {
+        // Credit: Humanizer (https://github.com/Humanizr/Humanizer/blob/master/src/Humanizer/StringHumanizeExtensions.cs#L16)
+        // ReSharper disable once StaticMemberInGenericType
+        private static readonly Regex PascalCaseWordPartsRegex = new Regex(@"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+",
+            RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture | RegexOptions.Compiled);
+
         /// <summary>
         /// Renders the grid container.
         /// </summary>
@@ -30,6 +39,16 @@ namespace WebHelpers.Mvc5.JqGrid
         public IHtmlString RenderAndInitialize(Grid grid)
         {
             return new MvcHtmlString(Container(grid) + Script(grid));
+        }
+
+        public Column ColumnFor<TProperty>(Expression<Func<TModel, TProperty>> expression)
+        {
+            var propertyName = ExpressionHelper.GetExpressionText(expression);
+
+            return new Column(propertyName)
+            {
+                Label = FromPascalCase(propertyName)
+            };
         }
 
         private string Container(Grid grid)
@@ -76,6 +95,19 @@ namespace WebHelpers.Mvc5.JqGrid
             sb.AppendLine("});");
 
             return sb.ToString();
+        }
+
+        private static string FromPascalCase(string input)
+        {
+            var result = string.Join(" ", PascalCaseWordPartsRegex
+                .Matches(input).Cast<Match>()
+                .Select(match => match.Value.ToCharArray().All(char.IsUpper) &&
+                                 (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I")
+                    ? match.Value
+                    : match.Value.ToLower()));
+
+            return result.Length > 0 ? char.ToUpper(result[0]) +
+                                       result.Substring(1, result.Length - 1) : result;
         }
     }
 }
