@@ -21,9 +21,9 @@ namespace WebHelpers.Mvc5.Demo.App_Start
                 .Include("~/Content/js/plugins/slimscroll/jquery.slimscroll.js")
                 .Include("~/Content/js/plugins/icheck/icheck.js")
                 .Include("~/Content/js/plugins/validator.js")
+                .Include("~/Content/js/plugins/jqgrid/grid.locale-en.js")
+                .Include("~/Content/js/plugins/jqgrid/jquery.jqGrid.min.js")
                 .Include("~/Content/js/adminlte.js")
-                .Include("~/Content/js/jqgrid/grid.locale-en.js")
-                .Include("~/Content/js/jqgrid/jquery.jqGrid.min.js")
                 .Include("~/Content/js/init.js"));
 
 #if DEBUG

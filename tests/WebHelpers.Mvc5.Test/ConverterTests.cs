@@ -99,7 +99,7 @@ namespace WebHelpers.Mvc5.Test
         private class ColumnNameConverterTest
         {
             [JsonConverter(typeof(ColumnNameConverter))]
-            public Column Column { get; set; } = new Column { Name = "Test" };
+            public Column Column { get; set; } = new Column("Test");
         }
     }
 }

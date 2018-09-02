@@ -15,8 +15,6 @@ namespace WebHelpers.Mvc5.JqGrid
     /// </remarks>
     public class Grid
     {
-        private bool _showPager;
-
         /// <summary>
         /// The name of the grid. The rendered elements will use this name as a prefix.
         /// </summary>
@@ -128,7 +126,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// </summary>
         [JsonProperty("datatype")]
         [DefaultValue(DataType.Xml)]
-        public DataType DataType { get; set; } = DataType.Xml;
+        public DataType DataType { get; set; } = DataType.Json;
 
         /// <summary>
         /// Specifies whether or not jQuery empty is used for the row and all child elements.
@@ -163,7 +161,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
         /// <summary>
         /// The message to display when the returned or current number of records in the grid is zero.
-        /// This option is only valid when TODO: viewrecords is true.
+        /// This option is only valid when <see cref="ShowPagerRowCount"/> is true.
         /// </summary>
         [JsonProperty("emptyrecords")]
         public string EmptyResultSetMessage { get; set; }
@@ -258,8 +256,8 @@ namespace WebHelpers.Mvc5.JqGrid
         public bool UseHoverRowEffect { get; set; } = true;
 
         /// <summary>
-        /// The icon set to use. This option is only valid when the // TODO: StyleUI is Bootstrap4.
-        /// The appropriate icon set CSS file must be loaded for this to work.
+        /// The icon set to use. This option is only valid when the <see cref="Style"/> is
+        /// <see cref="Style.Bootstrap4"/>. The appropriate icon set CSS file must be loaded for this to work.
         /// </summary>
         [JsonProperty("iconSet")]
         public IconSet? IconSet { get; set; }

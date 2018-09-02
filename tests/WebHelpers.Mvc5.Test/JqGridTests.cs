@@ -16,14 +16,14 @@ namespace WebHelpers.Mvc5.Test
                 ShowPager = false,
                 Columns = new List<Column>
                 {
-                    new Column { Name = "One" },
-                    new Column { Name = "Two" },
-                    new Column { Name = "Three" }
+                    new Column("One"),
+                    new Column("Two"),
+                    new Column("Three")
                 }
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}],colNames:[""One"",""Two"",""Three""],styleUI:""Bootstrap""}";
+            var expected = @"{colModel:[{name:""One""},{name:""Two""},{name:""Three""}],colNames:[""One"",""Two"",""Three""],datatype:""json"",styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -36,12 +36,12 @@ namespace WebHelpers.Mvc5.Test
                 ShowPager = false,
                 Columns = new List<Column>
                 {
-                    new Column { Name = "One", FormatterName = IntegerColumnFormatOptions.Name }
+                    new Column("One") { FormatterName = IntegerColumnFormatOptions.Name }
                 }
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{formatter:""integer"",name:""One""}],colNames:[""One""],styleUI:""Bootstrap""}";
+            var expected = @"{colModel:[{formatter:""integer"",name:""One""}],colNames:[""One""],datatype:""json"",styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -54,12 +54,12 @@ namespace WebHelpers.Mvc5.Test
                 ShowPager = false,
                 Columns = new List<Column>
                 {
-                    new Column { Name = "One", FormatterName = "MyCustomJsFunc" }
+                    new Column("One") { FormatterName = "MyCustomJsFunc" }
                 }
             };
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{formatter:MyCustomJsFunc,name:""One""}],colNames:[""One""],styleUI:""Bootstrap""}";
+            var expected = @"{colModel:[{formatter:MyCustomJsFunc,name:""One""}],colNames:[""One""],datatype:""json"",styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -72,14 +72,14 @@ namespace WebHelpers.Mvc5.Test
                 ShowPager = false,
                 Columns = new List<Column>
                 {
-                    new Column { Name = "One" },
-                    new Column { Name = "Two" }
+                    new Column("One"),
+                    new Column("Two")
                 }
             };
             grid.ColumnToExpand = grid.Columns[1];
 
             var json = grid.ToString();
-            var expected = @"{colModel:[{name:""One""},{name:""Two""}],colNames:[""One"",""Two""],ExpandColumn:""Two"",styleUI:""Bootstrap""}";
+            var expected = @"{colModel:[{name:""One""},{name:""Two""}],colNames:[""One"",""Two""],datatype:""json"",ExpandColumn:""Two"",styleUI:""Bootstrap""}";
 
             Assert.AreEqual(expected, json);
         }
@@ -94,13 +94,13 @@ namespace WebHelpers.Mvc5.Test
             };
 
             var json = grid.ToString();
-            var infinite = @"{scroll:true,styleUI:""Bootstrap""}";
+            var infinite = @"{datatype:""json"",scroll:true,styleUI:""Bootstrap""}";
 
             Assert.AreEqual(infinite, json);
 
             grid.VirtualScrollMode = JqGrid.VirtualScrollMode.OnlyVisibleRows;
             json = grid.ToString();
-            var onlyVisibleRows = @"{scroll:1,styleUI:""Bootstrap""}";
+            var onlyVisibleRows = @"{datatype:""json"",scroll:1,styleUI:""Bootstrap""}";
 
             Assert.AreEqual(onlyVisibleRows, json);
         }

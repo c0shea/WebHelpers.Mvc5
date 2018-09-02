@@ -6,7 +6,28 @@ namespace WebHelpers.Mvc5.JqGrid
 {
     public class JqGridHelper
     {
+        /// <summary>
+        /// Renders the grid container.
+        /// </summary>
         public IHtmlString Render(Grid grid)
+        {
+            return new MvcHtmlString(Container(grid));
+        }
+
+        /// <summary>
+        /// Initializes the grid via JavaScript after the page has loaded.
+        /// jQuery must be defined before this method in your view or layout for this to work.
+        /// </summary>
+        public IHtmlString Initialize(Grid grid)
+        {
+            return new MvcHtmlString(Script(grid));
+        }
+
+        /// <summary>
+        /// Renders the grid container and initializes the grid all at once.
+        /// jQuery must be defined before this method in your view or layout for this to work.
+        /// </summary>
+        public IHtmlString RenderAndInitialize(Grid grid)
         {
             return new MvcHtmlString(Container(grid) + Script(grid));
         }
@@ -36,13 +57,12 @@ namespace WebHelpers.Mvc5.JqGrid
             var script = new TagBuilder("script");
 
             script.MergeAttribute("type", "text/javascript");
-            script.InnerHtml = Initialize(grid);
+            script.InnerHtml = DocumentReady(grid);
 
             return script.ToString();
         }
 
-        // TODO: This isn't working because $ isn't defined yet since this is inserted into the DOM before the jQuery script tag. Need to provide an option to defer.
-        private string Initialize(Grid grid)
+        private string DocumentReady(Grid grid)
         {
             var sb = new StringBuilder();
             sb.AppendLine("$(document).ready(function () {");

@@ -177,7 +177,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// are not allowed.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Specifies whether or not the column can be resized with the mouse or resizeColumn method.
@@ -261,6 +261,11 @@ namespace WebHelpers.Mvc5.JqGrid
         [JsonProperty("viewable")]
         [DefaultValue(true)]
         public bool CanView { get; set; } = true;
+
+        public Column(string name)
+        {
+            Name = name;
+        }
 
         private bool IsValid()
         {

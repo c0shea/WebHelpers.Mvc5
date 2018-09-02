@@ -3,6 +3,34 @@
 
 @{
     ViewBag.Title = "Json";
+    var grid = new Grid("json")
+    {
+        DataUrl = Url.Action("JsonData"),
+        IsInitialWidthAutomatic = true,
+        IsResponsive = true,
+        ShowPagerRowCount = true,
+        Columns = new List<Column>
+        {
+            new Column("CategoryName"),
+            new Column("ProductName"),
+            new Column("Country"),
+            new Column("Price"),
+            new Column("Quantity")
+        }
+    };
 }
 
-@Html.JqGrid().Render(new Grid("Json"))
+<div class="box box-default">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12">
+                @Html.JqGrid().Render(grid)        
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ViewSpecificJavascript
+{
+    @Html.JqGrid().Initialize(grid)
+}

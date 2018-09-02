@@ -9,6 +9,11 @@ namespace WebHelpers.Mvc5.Demo.Controllers
             return View();
         }
 
+        public ActionResult JsonData()
+        {
+            return new JsonNetResult(new {key = "value"});
+        }
+
         public ActionResult Array()
         {
             return View();
