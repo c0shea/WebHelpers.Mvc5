@@ -368,7 +368,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// <summary>
         /// The position of the pager navigation buttons and record selection box in the grid.
         /// The pager element is divided into 3 positions and only one element can be in a single
-        /// position. When changing this option, the <see cref="PagerRecordAlign"/> // TODO:  must be changed as well.
+        /// position. When changing this option, the <see cref="PagerRecordAlign"/> must be changed as well.
         /// </summary>
         [JsonProperty("pagerpos")]
         [DefaultValue(PagerAlign.Center)]
@@ -406,7 +406,7 @@ namespace WebHelpers.Mvc5.JqGrid
         /// <summary>
         /// The position of the record information in the pager. The pager element is divided
         /// into 3 positions and only one element can be in a single position.
-        /// When changing this option, the <see cref="PagerNavigationAlign"/> // TODO:  must be changed as well.
+        /// When changing this option, the <see cref="PagerNavigationAlign"/> must be changed as well.
         /// </summary>
         [JsonProperty("recordpos")]
         [DefaultValue(PagerAlign.Right)]
@@ -420,13 +420,12 @@ namespace WebHelpers.Mvc5.JqGrid
         public string PagerRecordLabelTemplate { get; set; }
 
         /// <summary>
-        /// The two-letter code that correponds to the localization file (grid.locale-xx.js).
+        /// The locale to use that corresponds to the localization file (grid.locale-xx.js).
         /// The language file must be loaded for this option to work.
         /// </summary>
-        // TODO: Make this an enum of allowed language values
         [JsonProperty("regional")]
-        [DefaultValue("en")]
-        public string Localization { get; set; } = "en";
+        [DefaultValue(Locale.English)]
+        public Locale Locale { get; set; } = Locale.English;
 
         // TODO: remapColumns
         // TODO: resizeclass
