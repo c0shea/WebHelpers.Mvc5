@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConverterTests.cs" />
+    <Compile Include="HelperTests.cs" />
     <Compile Include="JqGridTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

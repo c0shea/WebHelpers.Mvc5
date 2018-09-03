@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
-    public class JqGridHelper<TModel>
+    public class JqGridBuilder<TModel>
     {
         /// <summary>
         /// Renders the grid container.
@@ -42,7 +42,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
             return new Column(propertyName)
             {
-                Label = Helper.FromPascalCase(propertyName),
+                Label = Helper.PascalCaseToLabel(propertyName),
                 SortType = Helper.MapSortType<TProperty>()
             };
         }

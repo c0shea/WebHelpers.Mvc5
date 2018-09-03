@@ -12,17 +12,11 @@ namespace WebHelpers.Mvc5.JqGrid
             RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture | RegexOptions.Compiled
         );
 
-        internal static string FromPascalCase(string input)
+        internal static string PascalCaseToLabel(string input)
         {
-            var result = string.Join(" ", PascalCaseWordPartsRegex
-                .Matches(input).Cast<Match>()
-                .Select(match => match.Value.ToCharArray().All(char.IsUpper) &&
-                                 (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I")
-                    ? match.Value
-                    : match.Value.ToLower()));
-
-            return result.Length > 0 ? char.ToUpper(result[0]) +
-                                       result.Substring(1, result.Length - 1) : result;
+            return string.Join(" ", PascalCaseWordPartsRegex.Matches(input)
+                                                            .Cast<Match>()
+                                                            .Select(match => match.Value));
         }
 
         internal static SortType MapSortType<TProperty>()

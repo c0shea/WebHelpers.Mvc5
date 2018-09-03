@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using WebHelpers.Mvc5.JqGrid;
 
 namespace WebHelpers.Mvc5
 {
@@ -8,9 +7,20 @@ namespace WebHelpers.Mvc5
     /// </summary>
     public static class HtmlHelperExtensions
     {
-        public static JqGridHelper<TModel> JqGrid<TModel>(this HtmlHelper<TModel> htmlHelper)
+        /// <summary>
+        /// Constructs a new WebHelpers instance using the type of this view's model.
+        /// </summary>
+        public static WebHelpers<TModel> WebHelpers<TModel>(this HtmlHelper<TModel> htmlHelper)
         {
-            return new JqGridHelper<TModel>();
+            return new WebHelpers<TModel>();
+        }
+
+        /// <summary>
+        /// Constructs a new WebHelpers instance using the type specified by <typeparamref name="T"/>.
+        /// </summary>
+        public static WebHelpers<T> WebHelpers<T>(this HtmlHelper htmlHelper)
+        {
+            return new WebHelpers<T>();
         }
     }
 }

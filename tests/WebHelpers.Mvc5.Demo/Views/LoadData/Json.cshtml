@@ -21,6 +21,10 @@
     };
 }
 
+@Html.WebHelpers().JqGrid()
+
+@(Html.JqGrid<string>().ColumnFor(c => c) .Render(null))
+
 <div class="box box-default">
     <div class="box-body">
         <div class="row">
