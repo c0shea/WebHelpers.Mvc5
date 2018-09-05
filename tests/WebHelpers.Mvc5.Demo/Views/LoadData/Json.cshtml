@@ -19,17 +19,21 @@
             new Column("Quantity"){SortType = SortType.Integer}
         }
     };
+
+    var jqgrid = Html.WebHelpers().JqGrid();
+    jqgrid.Grid = grid;
+
+    jqgrid.Columns(columns =>
+    {
+        columns.Add(jqgrid.ColumnFor(c => c.CategoryName));
+    });
 }
 
-@Html.WebHelpers().JqGrid()
-
-@(Html.JqGrid<string>().ColumnFor(c => c) .Render(null))
-
 <div class="box box-default">
     <div class="box-body">
         <div class="row">
             <div class="col-xs-12">
-                @Html.JqGrid().Render(grid)
+                @jqgrid.Render(grid)
             </div>
         </div>
     </div>
@@ -39,7 +43,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-xs-12">
-                @JsonConvert.SerializeObject(Html.JqGrid().ColumnFor(c => c.CategoryName))
+                @*@JsonConvert.SerializeObject(Html.JqGrid().ColumnFor(c => c.CategoryName))*@
             </div>
         </div>
     </div>
@@ -49,7 +53,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-xs-12">
-                @JsonConvert.SerializeObject(Html.JqGrid().ColumnFor(c => c.Price))
+                @*@JsonConvert.SerializeObject(Html.JqGrid().ColumnFor(c => c.Price))*@
             </div>
         </div>
     </div>
@@ -57,5 +61,5 @@
 
 @section ViewSpecificJavascript
 {
-    @Html.JqGrid().Initialize(grid)
+    @jqgrid.Initialize(grid)
 }

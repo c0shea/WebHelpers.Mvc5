@@ -10,7 +10,7 @@ namespace WebHelpers.Mvc5
     /// <typeparam name="TModel">The type of the model.</typeparam>
     public class WebHelpers<TModel>
     {
-        public static JqGridBuilder<TModel> JqGrid()
+        public JqGridBuilder<TModel> JqGrid()
         {
             return new JqGridBuilder<TModel>();
         }

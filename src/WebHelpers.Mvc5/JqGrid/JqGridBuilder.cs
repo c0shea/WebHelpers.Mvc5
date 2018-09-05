@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,6 +11,8 @@ namespace WebHelpers.Mvc5.JqGrid
 {
     public class JqGridBuilder<TModel>
     {
+        #region Render to View
+
         /// <summary>
         /// Renders the grid container.
         /// </summary>
@@ -34,17 +37,6 @@ namespace WebHelpers.Mvc5.JqGrid
         public IHtmlString RenderAndInitialize(Grid grid)
         {
             return new MvcHtmlString(Container(grid) + Script(grid));
-        }
-
-        public Column ColumnFor<TProperty>(Expression<Func<TModel, TProperty>> expression)
-        {
-            var propertyName = ExpressionHelper.GetExpressionText(expression);
-
-            return new Column(propertyName)
-            {
-                Label = Helper.PascalCaseToLabel(propertyName),
-                SortType = Helper.MapSortType<TProperty>()
-            };
         }
 
         private string Container(Grid grid)
@@ -93,6 +85,33 @@ namespace WebHelpers.Mvc5.JqGrid
             return sb.ToString();
         }
 
-        
+        #endregion
+
+        #region Fluent Syntax
+
+        public Grid Grid { get; set; }
+
+        public void Columns(Action<List<Column>> columns)
+        {
+            if (Grid.Columns == null)
+            {
+                Grid.Columns = new List<Column>();
+            }
+
+            columns(Grid.Columns);
+        }
+
+        public Column ColumnFor<TProperty>(Expression<Func<TModel, TProperty>> expression)
+        {
+            var propertyName = ExpressionHelper.GetExpressionText(expression);
+
+            return new Column(propertyName)
+            {
+                Label = Helper.PascalCaseToLabel(propertyName),
+                SortType = Helper.MapSortType<TProperty>()
+            };
+        }
+
+        #endregion
     }
 }
