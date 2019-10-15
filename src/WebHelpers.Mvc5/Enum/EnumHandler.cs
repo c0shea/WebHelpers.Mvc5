@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -104,14 +105,31 @@ namespace WebHelpers.Mvc5.Enum
 
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                enumsFound.AddRange(assembly.GetTypes()
-                    .Where(t => t.IsEnum && t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
+                enumsFound.AddRange(GetLoadableTypes(assembly).Where(t => t.IsEnum &&
+                                                                          t.GetCustomAttributes(typeof(ExposeInJavaScriptAttribute), inherit: true).Any()));
             }
 
             enumsFound.AddRange(EnumsToExpose.TypesToInclude);
             enumsFound.RemoveAll(e => EnumsToExpose.TypesToExclude.Contains(e));
 
             return enumsFound.Distinct().ToList();
+        }
+
+        /// <summary>
+        /// The call to <see cref="Assembly.GetTypes"/> sometimes throws a <see cref="ReflectionTypeLoadException"/>
+        /// when one or more of the inner types reference an assembly that isn't loaded and can't be found.
+        /// This works around that by only finding types that are loadable at runtime.
+        /// </summary>
+        private static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
+        {
+            try
+            {
+                return assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                return ex.Types.Where(t => t != null);
+            }
         }
 
         private static void AppendEnumJson(StringBuilder sb, Type type)
