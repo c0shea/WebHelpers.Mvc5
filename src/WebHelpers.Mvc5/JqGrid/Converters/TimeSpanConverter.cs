@@ -1,5 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
@@ -9,7 +13,7 @@ namespace WebHelpers.Mvc5.JqGrid.Converters
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var milliseconds = ((TimeSpan) value).TotalMilliseconds;
+            var milliseconds = ((TimeSpan)value).TotalMilliseconds;
             writer.WriteValue((int)milliseconds);
         }
 

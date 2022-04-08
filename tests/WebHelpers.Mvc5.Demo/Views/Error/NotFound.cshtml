@@ -1,7 +1,4 @@
-﻿@{
-    ViewBag.Title = "Not Found";
-}
-
+﻿
 <div class="error-page">
     <h2 class="headline text-red">404</h2>
 
@@ -13,6 +10,6 @@
             If the problem persists, contact support.
         </p>
 
-        <a href="@Url.Action("Index", "Home")" class="btn btn-default" role="button">Home</a>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-default" role="button">Home</a>
     </div>
 </div>

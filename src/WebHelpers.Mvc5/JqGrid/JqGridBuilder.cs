@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.Mvc;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
@@ -16,57 +18,58 @@ namespace WebHelpers.Mvc5.JqGrid
         /// <summary>
         /// Renders the grid container.
         /// </summary>
-        public IHtmlString Render(Grid grid)
+        public IHtmlContent Render(Grid grid)
         {
-            return new MvcHtmlString(Container(grid));
+            return Container(grid);
         }
 
         /// <summary>
         /// Initializes the grid via JavaScript after the page has loaded.
         /// jQuery must be defined before this method in your view or layout for this to work.
         /// </summary>
-        public IHtmlString Initialize(Grid grid)
+        public IHtmlContent Initialize(Grid grid)
         {
-            return new MvcHtmlString(Script(grid));
+            return Script(grid);
         }
 
         /// <summary>
         /// Renders the grid container and initializes the grid all at once.
         /// jQuery must be defined before this method in your view or layout for this to work.
         /// </summary>
-        public IHtmlString RenderAndInitialize(Grid grid)
+        public IHtmlContent RenderAndInitialize(Grid grid)
         {
-            return new MvcHtmlString(Container(grid) + Script(grid));
+            return new HtmlContentBuilder().AppendHtml(Container(grid)).AppendHtml(Script(grid));
         }
 
-        private string Container(Grid grid)
+        private IHtmlContent Container(Grid grid)
         {
             var div = new TagBuilder("div");
-            div.GenerateId($"{grid.Name}-container");
+            div.GenerateId($"{grid.Name}-container", "");
 
             var table = new TagBuilder("table");
-            table.GenerateId(grid.Name);
+            table.GenerateId(grid.Name, "");
 
-            div.InnerHtml += table.ToString();
+            div.InnerHtml.AppendHtml(table);
 
             if (grid.ShowPager)
             {
                 var pager = new TagBuilder("div");
-                pager.GenerateId(grid.Pager);
-                div.InnerHtml += pager.ToString();
+                pager.GenerateId(grid.Pager, "");
+                div.InnerHtml.AppendHtml(pager);
             }
 
-            return div.ToString();
+            
+            return div.RenderBody();
         }
 
-        private string Script(Grid grid)
+        private IHtmlContent Script(Grid grid)
         {
             var script = new TagBuilder("script");
 
             script.MergeAttribute("type", "text/javascript");
-            script.InnerHtml = DocumentReady(grid);
+            script.InnerHtml.Append(DocumentReady(grid));
 
-            return script.ToString();
+            return script.RenderBody();
         }
 
         private string DocumentReady(Grid grid)
@@ -103,7 +106,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
         public Column ColumnFor<TProperty>(Expression<Func<TModel, TProperty>> expression)
         {
-            var propertyName = ExpressionHelper.GetExpressionText(expression);
+            var propertyName = expression.GetExpressionText();
 
             return new Column(propertyName)
             {

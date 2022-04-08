@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelpers.Mvc5", "WebHelpers.Mvc5\WebHelpers.Mvc5.csproj", "{6A365D23-60BB-4342-9B62-1370084E205A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHelpers.Mvc5", "WebHelpers.Mvc5\WebHelpers.Mvc5.csproj", "{1F4B4531-9B08-4BC8-9DF1-0EE7A4C80FE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76C477F6-EE6A-42FA-A794-77C24722AB4D}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec = WebHelpers.Mvc5\WebHelpers.Mvc5.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelpers.Mvc5.Test", "..\tests\WebHelpers.Mvc5.Test\WebHelpers.Mvc5.Test.csproj", "{1E2FD900-6987-481C-8DDC-2A160BF94DBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHelpers.Mvc5.Demo", "..\tests\WebHelpers.Mvc5.Demo\WebHelpers.Mvc5.Demo.csproj", "{119FEE2B-5898-4D29-9248-16181F964C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHelpers.Mvc5.Demo", "..\tests\WebHelpers.Mvc5.Demo\WebHelpers.Mvc5.Demo.csproj", "{0F532713-4068-4033-ABEC-DDB8656C6D91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHelpers.Mvc5.Test", "..\tests\WebHelpers.Mvc5.Test\WebHelpers.Mvc5.Test.csproj", "{20D7399E-B9A9-472A-912D-205A51B57476}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,23 +21,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A365D23-60BB-4342-9B62-1370084E205A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A365D23-60BB-4342-9B62-1370084E205A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A365D23-60BB-4342-9B62-1370084E205A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A365D23-60BB-4342-9B62-1370084E205A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E2FD900-6987-481C-8DDC-2A160BF94DBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F532713-4068-4033-ABEC-DDB8656C6D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F532713-4068-4033-ABEC-DDB8656C6D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F532713-4068-4033-ABEC-DDB8656C6D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F532713-4068-4033-ABEC-DDB8656C6D91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4B4531-9B08-4BC8-9DF1-0EE7A4C80FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4B4531-9B08-4BC8-9DF1-0EE7A4C80FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4B4531-9B08-4BC8-9DF1-0EE7A4C80FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4B4531-9B08-4BC8-9DF1-0EE7A4C80FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119FEE2B-5898-4D29-9248-16181F964C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119FEE2B-5898-4D29-9248-16181F964C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119FEE2B-5898-4D29-9248-16181F964C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119FEE2B-5898-4D29-9248-16181F964C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20D7399E-B9A9-472A-912D-205A51B57476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20D7399E-B9A9-472A-912D-205A51B57476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20D7399E-B9A9-472A-912D-205A51B57476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20D7399E-B9A9-472A-912D-205A51B57476}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BEEAAFE8-63EB-41A4-9A8B-83A604A84CF6}
+		SolutionGuid = {E608AA90-3065-4D1C-A7F3-B5B80B8E2C98}
 	EndGlobalSection
 EndGlobal

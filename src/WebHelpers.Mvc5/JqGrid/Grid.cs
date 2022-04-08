@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Web.UI.WebControls;
-using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
 using WebHelpers.Mvc5.JqGrid.Converters;
 using TimeSpanConverter = WebHelpers.Mvc5.JqGrid.Converters.TimeSpanConverter;
 
@@ -106,14 +107,14 @@ namespace WebHelpers.Mvc5.JqGrid
 
         [JsonProperty("colModel")]
         public List<Column> Columns { get; set; }
-        
+
         [JsonProperty("colNames")]
         public List<string> ColumnNames => Columns?.Select(c => c.Label ?? c.Name).ToList();
 
         [JsonProperty("data")]
         [JsonConverter(typeof(LiteralNameConverter))]
         public string LocalDataArrayName { get; set; }
-        
+
         /// <summary>
         /// The string of data to use when the <see cref="DataType"/> parameter is set to
         /// <see cref="DataType.XmlLocalData"/> or <see cref="DataType.JsonLocalData"/>.
