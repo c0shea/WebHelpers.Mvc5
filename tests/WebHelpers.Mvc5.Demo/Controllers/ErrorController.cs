@@ -1,17 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5.Demo.Controllers
 {
     public class ErrorController : Controller
     {
-        public ActionResult InternalServerError()
-        {
-            return View();
-        }
 
-        public ActionResult NotFound()
-        {
-            return View();
-        }
+        public IActionResult InternalServerError() => View();
+
+        public IActionResult NotFound => View();
     }
 }

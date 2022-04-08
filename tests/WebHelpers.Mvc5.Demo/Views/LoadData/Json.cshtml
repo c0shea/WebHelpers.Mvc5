@@ -9,23 +9,28 @@
         DataUrl = Url.Action("JsonData"),
         IsInitialWidthAutomatic = true,
         IsResponsive = true,
-        ShowPagerRowCount = true,
         Columns = new List<Column>
-        {
+{
             new Column("CategoryName"),
             new Column("ProductName"),
             new Column("Country"),
-            new Column("Price"){SortType = SortType.Decimal},
-            new Column("Quantity"){SortType = SortType.Integer}
+            new Column("Price")
+            {
+                SortType = SortType.Decimal
+            },
+            new Column("Quantity")
+            {
+                SortType = SortType.Integer
+            }
         }
     };
 
     var jqgrid = Html.WebHelpers().JqGrid();
     jqgrid.Grid = grid;
 
-    jqgrid.Columns(columns =>
+    jqgrid.Columns(column =>
     {
-        columns.Add(jqgrid.ColumnFor(c => c.CategoryName));
+        column.Add(jqgrid.ColumnFor(c => c.CategoryName));
     });
 }
 
@@ -33,7 +38,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-xs-12">
-                @jqgrid.Render(grid)
+                @jqgrid.Render(grid);
             </div>
         </div>
     </div>
@@ -59,7 +64,7 @@
     </div>
 </div>
 
-@section ViewSpecificJavascript
+@section Scripts
 {
     @jqgrid.Initialize(grid)
 }

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using WebHelpers.Mvc5.JqGrid;
 using WebHelpers.Mvc5.JqGrid.ColumnFormatOptions;
 

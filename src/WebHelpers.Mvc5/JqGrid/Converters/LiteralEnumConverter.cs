@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using Newtonsoft.Json;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5.JqGrid.Converters
 {
@@ -21,7 +25,7 @@ namespace WebHelpers.Mvc5.JqGrid.Converters
                 return;
             }
 
-            var e = (System.Enum) value;
+            var e = (System.Enum)value;
 
             writer.WriteRawValue(GetEnumValueName(e));
         }

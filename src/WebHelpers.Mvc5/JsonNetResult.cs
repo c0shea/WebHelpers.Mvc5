@@ -1,8 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5
 {
@@ -11,7 +14,6 @@ namespace WebHelpers.Mvc5
     /// </summary>
     public class JsonNetResult : ActionResult
     {
-        public Encoding ContentEncoding { get; set; }
         public string ContentType { get; set; }
         public object Data { get; set; }
 
@@ -24,7 +26,7 @@ namespace WebHelpers.Mvc5
             Data = data;
         }
 
-        public override void ExecuteResult(ControllerContext context)
+        public override void ExecuteResult(ActionContext context)
         {
             if (context == null)
             {
@@ -33,11 +35,6 @@ namespace WebHelpers.Mvc5
 
             var response = context.HttpContext.Response;
             response.ContentType = string.IsNullOrEmpty(ContentType) ? "application/json" : ContentType;
-
-            if (ContentEncoding != null)
-            {
-                response.ContentEncoding = ContentEncoding;
-            }
 
             if (Data == null)
             {
@@ -49,7 +46,7 @@ namespace WebHelpers.Mvc5
             using (var writer = new StringWriter())
             {
                 serializer.Serialize(writer, Data);
-                response.Write(writer.ToString());
+                response.Body.WriteAsync(Encoding.Default.GetBytes(writer.ToString()));
             }
         }
     }

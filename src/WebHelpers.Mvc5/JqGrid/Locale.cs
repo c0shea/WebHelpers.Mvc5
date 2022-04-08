@@ -1,4 +1,9 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WebHelpers.Mvc5.JqGrid
 {
@@ -39,7 +44,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
         [EnumMember(Value = "fi")]
         Finnish,
-        
+
         [EnumMember(Value = "fr")]
         French,
 
@@ -72,7 +77,7 @@ namespace WebHelpers.Mvc5.JqGrid
 
         [EnumMember(Value = "lt")]
         Lithuanian,
-        
+
         [EnumMember(Value = "nl")]
         Dutch,
 
